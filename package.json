@@ -1,7 +1,7 @@
 {
     "author" : "Marat Dulin <mdevils@yandex.ru>",
     "description" : "BEMHTML ENB Techs",
-    "name" : "enb",
+    "name" : "enb-bemhtml",
     "version" : "0.0.1",
     "contributors": [
         {
