@@ -1,0 +1,25 @@
+{
+    "author" : "Marat Dulin <mdevils@yandex.ru>",
+    "description" : "BEMHTML ENB Techs",
+    "name" : "enb",
+    "version" : "0.0.1",
+    "contributors": [
+        {
+            "name": "Marat Dulin",
+            "email": "mdevils@yandex.ru"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies" : {
+        "bemc": "1.0.3",
+        "sibling": ">=0.0.3"
+    },
+    "peerDependencies": {
+        "enb": ">= 0.7.15",
+        "inherit": "*",
+        "vow": "*",
+        "vow-fs": "*"
+    }
+}
