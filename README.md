@@ -3,6 +3,12 @@ enb-bemhtml
 
 Поддерка BEMHTML для ENB. Пакет содержит технологию `enb-bemhtml/techs/bemhtml` для сборки BEMHTML.
 
+Установка:
+
+```
+npm install enb-bemhtml
+```
+
 bemhtml
 -------
 
