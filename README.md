@@ -12,7 +12,7 @@ npm install enb-bemhtml
 bemhtml
 -------
 
-Склеивает *bemhtml*-файлы по deps'ам, обрабатывает BEMHTML-транслятором, сохраняет (по умолчанию) в виде `?.bemhtml.js`. Использует пакет `bemc` (https://github.com/bem/bemc).
+Склеивает *bemhtml*-файлы по deps'ам, обрабатывает BEMHTML-транслятором, сохраняет (по умолчанию) в виде `?.bemhtml.js`. Использует компилятор, входящий в состав библиотеки `bem-core` (https://github.com/bem/bem-core).
 
 **Опции**
 
