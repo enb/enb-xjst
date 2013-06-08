@@ -1,13 +1,14 @@
 var inherit = require('inherit'),
     Vow = require('vow'),
     vowFs = require('vow-fs'),
-    bemc = require('bemc');
+    BEMHTML = require('bem-core/.bem/lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('bemhtml')
     .target('target', '?.bemhtml.js')
     .defineOption('exportName', 'BEMHTML')
     .defineOption('devMode', true)
+    .defineOption('cache', true)
     .useFileList('bemhtml')
     .builder(function(sourceFiles) {
         var _this = this;
@@ -17,7 +18,7 @@ module.exports = require('enb/lib/build-flow').create()
             .then(function(sources) {
                 _this.node.getLogger().log('Calm down, OmetaJS is running...');
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
-                return bemhtmlProcessor.process(sources.join('\n'), _this._exportName, _this._devMode).then(function(res) {
+                return bemhtmlProcessor.process(sources.join('\n'), _this._devMode, _this._cache).then(function(res) {
                     bemhtmlProcessor.dispose();
                     return res;
                 });
@@ -26,10 +27,10 @@ module.exports = require('enb/lib/build-flow').create()
     .createTech();
 
 var BemhtmlProcessor = require('sibling').declare({
-    process: function(source, exportName, devMode) {
-        return bemc.translate(source, {
-            exportName: exportName,
-            devMode: devMode
+    process: function(source, devMode, cache) {
+        return BEMHTML.translate(source, {
+            devMode: devMode,
+            cache: cache
         });
     }
 });
