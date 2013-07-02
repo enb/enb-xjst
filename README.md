@@ -1,7 +1,7 @@
 enb-bemhtml
 ===========
 
-Поддерка BEMHTML для ENB. Пакет содержит технологию `enb-bemhtml/techs/bemhtml` для сборки BEMHTML.
+Поддержка BEMHTML для ENB. Пакет содержит `enb-bemhtml/techs/bemhtml` и `enb-bemhtml/techs/bemhtml-old` технологии для сборки BEMHTML.
 
 Установка:
 
@@ -13,6 +13,7 @@ bemhtml
 -------
 
 Склеивает *bemhtml*-файлы по deps'ам, обрабатывает BEMHTML-транслятором, сохраняет (по умолчанию) в виде `?.bemhtml.js`. Использует компилятор, входящий в состав библиотеки `bem-core` (https://github.com/bem/bem-core).
+Поддерживает новый js-совместимый синтаксис bemhtml.
 
 **Опции**
 
