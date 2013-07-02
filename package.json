@@ -13,7 +13,8 @@
         "node": ">= 0.8.0"
     },
     "dependencies" : {
-        "bem-core": "git://github.com/bem/bem-core.git#v1.0.0",
+        "bem-core": "git://github.com/bem/bem-core.git#v1",
+        "bemhtml-compat": "0.0.8",
         "sibling": ">=0.0.3",
         "inherit": ">=1.0.4",
         "vow": ">=0.3.3",
