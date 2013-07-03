@@ -1,9 +1,10 @@
 var inherit = require('inherit'),
     Vow = require('vow'),
     vowFs = require('vow-fs'),
-    BEMHTML = require('bem-core/.bem/lib/bemhtml');
+    BEMHTML = require('bem-core/.bem/lib/bemhtml'),
+    tech;
 
-module.exports = require('enb/lib/build-flow').create()
+tech = require('enb/lib/build-flow').create()
     .name('bemhtml')
     .target('target', '?.bemhtml.js')
     .defineOption('exportName', 'BEMHTML')
@@ -23,8 +24,10 @@ module.exports = require('enb/lib/build-flow').create()
                     return res;
                 });
             });
-    })
-    .createTech();
+    });
+
+module.exports = tech.createTech();
+module.exports.tech = tech;
 
 var BemhtmlProcessor = require('sibling').declare({
     process: function(source, devMode, cache, exportName) {
