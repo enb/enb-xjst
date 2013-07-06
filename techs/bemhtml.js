@@ -1,7 +1,7 @@
 var inherit = require('inherit'),
     Vow = require('vow'),
     vowFs = require('vow-fs'),
-    BEMHTML = require('bem-core/.bem/lib/bemhtml');
+    BEMHTML = require('../lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('bemhtml')
