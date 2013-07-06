@@ -1,5 +1,4 @@
-var inherit = require('inherit'),
-    Vow = require('vow'),
+var Vow = require('vow'),
     vowFs = require('vow-fs'),
     BEMHTML = require('../lib/bemhtml');
 

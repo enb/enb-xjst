@@ -14,7 +14,6 @@
     },
     "dependencies" : {
         "sibling": ">=0.0.3",
-        "inherit": ">=1.0.4",
         "vow": ">=0.3.3",
         "vow-fs": ">=0.1.12"
     },
