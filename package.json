@@ -28,7 +28,7 @@
         "enb": ">= 0.7.15"
     },
     "scripts": {
-        "test": "npm run-script build-bemhtml && npm run-script func-test",
+        "test": "npm run-script func-test",
         "func-test": "npm run-script build-bemhtml && ./node_modules/.bin/mocha -u bdd -R spec --recursive test/func",
         "build-bemhtml": "cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make -n"
     }
