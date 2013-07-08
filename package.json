@@ -2,7 +2,7 @@
     "author" : "Marat Dulin <mdevils@yandex.ru>",
     "description" : "BEMHTML ENB Techs",
     "name" : "enb-bemhtml",
-    "version" : "0.0.5",
+    "version" : "0.0.6",
     "contributors": [
         {
             "name": "Marat Dulin",
@@ -19,14 +19,14 @@
     "dependencies" : {
         "sibling": ">=0.0.3",
         "vow": ">=0.3.3",
-        "vow-fs": ">=0.1.12"
+        "vow-fs": ">=0.1.12",
+        "xjst": "~0.4.12",
+        "ometajs": "~3.2.2"
     },
     "devDependencies" : {
         "enb": ">= 0.7.15",
         "mocha": "1.12.0",
-        "chai": "1.7.2",
-        "xjst": "~0.4.12",
-        "ometajs": "~3.2.2"
+        "chai": "1.7.2"
     },
     "peerDependencies": {
         "enb": ">= 0.7.15"
