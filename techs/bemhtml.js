@@ -20,7 +20,7 @@
  * ```
  */
 var Vow = require('vow'),
-    vowFs = require('vow-fs'),
+    vowFs = require('enb/lib/fs/async-fs'),
     BEMHTML = require('../lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
