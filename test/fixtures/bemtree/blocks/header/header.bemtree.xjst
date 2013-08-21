@@ -1,0 +1,72 @@
+block header {
+
+    default: {
+        return applyNext();
+    }
+
+    content: {
+        return {
+            elem : 'title',
+            content : 'welcome' //BEM.I18N('header', 'welcome')
+        };
+    }
+
+    elem title {
+
+        content, !this.ctx._pause: {
+            dump(this, '<- before P request');
+
+            return this.doAsync(doRequestP)
+                .then(
+                        function(data) {
+                            dump(this, '<- after P request');
+
+                            return applyCtx({ elem : 'bembembem', data : data });
+                        }.bind(this),
+                        function(err) {
+                            dump(this, '<- after P request fail!');
+
+                            return applyNext(this.ctx.content = 'blah-blah');
+                        }.bind(this)
+                    );
+        }
+
+    }
+
+    elem bembembem, this.ctx.data, content: {
+        elem : 'login',
+        content : this.ctx.data.login
+    }
+
+}
+
+
+function doRequestP() {
+    var body = '',
+        defer = Vow.promise();
+
+    log('>>> do request');
+
+    var req = require('https').request('https://api.github.com/users/bem', function(res) {
+        res.on('data', function(data) {
+            body += data;
+        });
+
+        res.on('end', function() {
+            log('request end');
+
+            setTimeout(function() {
+//                defer.reject(new Error('Blah!'));
+                defer.fulfill(JSON.parse(body));
+            }, 300);
+        });
+
+        res.on('error', function(err) {
+            defer.reject(err);
+        });
+    });
+
+    req.end();
+
+    return defer;
+}
