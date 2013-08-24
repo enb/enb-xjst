@@ -7,12 +7,7 @@ module.exports = function(config) {
             new (require('enb/techs/files'))(),
             new (require('enb/techs/file-provider'))({ target: '?.bemdecl.js' }),
             new (require('enb/techs/deps-old'))(),
-            new (require(ENB_BEMHTML + 'techs/bemhtml'))({
-                exportName: 'BEMTREE',
-                sourceSuffixes: 'bemtree.xjst',
-                target: '?.bemtree.xjst.js',
-                devMode: true
-            })
+            new (require(ENB_BEMHTML + 'techs/bemtree'))({ devMode: true })
         ]);
         nodeConfig.addTargets([
             '?.bemtree.xjst.js'
@@ -25,6 +20,6 @@ function getLevels(config) {
     return [
         'blocks'
     ].map(function(level) {
-            return config.resolvePath(level);
-        });
+        return config.resolvePath(level);
+    });
 }
