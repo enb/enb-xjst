@@ -38,20 +38,26 @@ module.exports = require('enb/lib/build-flow').create()
             .then(function(sources) {
                 _this.node.getLogger().log('Calm down, OmetaJS is running...');
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
-                return bemhtmlProcessor.process(sources.join('\n'), _this._devMode, _this._cache, _this._exportName).then(function(res) {
+                return bemhtmlProcessor.process(sources.join('\n'), _this._getOptions()).then(function(res) {
                     bemhtmlProcessor.dispose();
                     return res;
                 });
             });
     })
+    .methods({
+        _getOptions: function() {
+            return {
+                devMode: this._devMode,
+                cache: this._cache,
+                exportName: this._exportName,
+                async: false
+            };
+        }
+    })
     .createTech();
 
 var BemhtmlProcessor = require('sibling').declare({
-    process: function(source, devMode, cache, exportName) {
-        return BEMHTML.translate(source, {
-            devMode: devMode,
-            cache: cache,
-            exportName: exportName
-        });
+    process: function(source, options) {
+        return BEMHTML.translate(source, options);
     }
 });

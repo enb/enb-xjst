@@ -1,0 +1,16 @@
+block body {
+
+    default: {
+
+        return this.doAsync(function() {
+                return 'some async result';
+            })
+            .then(function(data) {
+                dump(this, '<- after some async function');
+
+                return data;
+            }.bind(this));
+
+    }
+
+}
