@@ -3,6 +3,7 @@
     "description" : "BEMHTML ENB Techs",
     "name" : "enb-bemhtml",
     "version" : "0.0.7",
+    "repository": "git://github.com/enb-make/enb-bemhtml",
     "contributors": [
         {
             "name": "Marat Dulin",
