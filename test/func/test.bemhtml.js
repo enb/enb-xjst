@@ -4,7 +4,7 @@ require('chai').should();
 
 describe('functional', function() {
     describe('bemhtml', function() {
-        describe('page', function(e) {
+        describe('page', function() {
             it('build simple page', function() {
                 var bemhtml = require('../fixtures/bemhtml/page/page.bemhtml').BEMHTML,
                     bemjson = require('../fixtures/bemhtml/data/page.json'),
