@@ -1,4 +1,4 @@
-enb-bemhtml [![Build Status](https://travis-ci.org/enb-make/enb-bemhtml.png?branch=master)](https://travis-ci.org/enb-make/enb-bemhtml)
+enb-bemhtml [![Build Status](https://travis-ci.org/enb-make/enb-bemhtml.png?branch=master)](https://travis-ci.org/enb-make/enb-bemhtml) [![NPM version](https://badge.fury.io/js/enb-bemhtml.png)](http://badge.fury.io/js/enb-bemhtml)
 ===========
 
 Поддержка BEMHTML для ENB. Пакет содержит технологию `enb-bemhtml/techs/bemhtml` для сборки BEMHTML.
