@@ -5,6 +5,7 @@
     "version" : "0.0.7",
     "repository": "git://github.com/enb-make/enb-bemhtml",
     "homepage": "https://github.com/enb-make/enb-bemhtml",
+    "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
     "contributors": [
         {
             "name": "Marat Dulin",
