@@ -1,4 +1,5 @@
 BIN = ./node_modules/.bin
+JSHINT = $(BIN)/jshint
 JSCS = $(BIN)/jscs
 NPM = npm
 
@@ -11,6 +12,7 @@ test: clean node_modules
 
 .PHONY: lint
 lint:
+	$(JSHINT) .
 	$(JSCS) .
 
 .PHONY: clean
