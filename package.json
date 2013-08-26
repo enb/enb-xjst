@@ -33,7 +33,8 @@
         "enb": ">= 0.8.22"
     },
     "scripts": {
-        "test": "npm run-script func-test",
+        "test": "make validate",
+        "lint": "make lint",
         "func-test": "npm run-script build-bemhtml && npm run-script build-bemtree && ./node_modules/.bin/mocha -u bdd -R spec --recursive test/func",
         "build-bemhtml": "cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make -n",
         "build-bemtree": "cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make -n"
