@@ -17,7 +17,7 @@ lint:
 
 .PHONY: clean
 clean:
-	npm run-script clean-build
+	npm run-script clean
 
 .PHONY: node_modules
 node_modules:
