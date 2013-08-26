@@ -6,6 +6,10 @@
     "repository": "git://github.com/enb-make/enb-bemhtml",
     "homepage": "https://github.com/enb-make/enb-bemhtml",
     "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/enb-make/enb-bemhtml/blob/master/LICENSE"
+    }],
     "contributors": [
         {
             "name": "Marat Dulin",
