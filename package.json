@@ -2,7 +2,7 @@
     "author" : "Marat Dulin <mdevils@yandex.ru>",
     "description" : "BEMHTML ENB Techs",
     "name" : "enb-bemhtml",
-    "version" : "0.0.7",
+    "version" : "0.1.0",
     "repository": "git://github.com/enb-make/enb-bemhtml",
     "homepage": "https://github.com/enb-make/enb-bemhtml",
     "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
