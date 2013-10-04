@@ -1,3 +1,6 @@
+Версия 0.1.1:
+ * Исправлена `BEMHTML.apply(undefined)` (@an9eldust).
+
 Версия 0.1.0:
  * Добавлена `bemtree` технология.
  * Исправлена `exportName` опция для `bemhtml` технологии.
