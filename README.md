@@ -24,6 +24,7 @@ bemhtml
 * *String* **exportName** — Имя переменной-обработчика BEMHTML. По умолчанию — `'BEMHTML'`.
 * *Boolean* **devMode** — Development-режим. По умолчанию — `true`.
 * *Boolean* **cache** — Кеширование. По умолчанию — `true`.
+* *Boolean* **asyncify** — Передаётся библиотеке xjst, задаёт режим компиляции. По умолчанию — `false`.
 
 **Пример**
 

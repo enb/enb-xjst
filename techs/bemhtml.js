@@ -13,6 +13,7 @@
  * * *String* **exportName** — Имя переменной-обработчика BEMHTML. По умолчанию — `'BEMHTML'`.
  * * *Boolean* **devMode** — Development-режим. По умолчанию — `true`.
  * * *Boolean* **cache** — Кеширование. По умолчанию — `true`.
+ * * *Boolean* **asyncify** — Передаётся библиотеке xjst, задаёт режим компиляции. По умолчанию — `false`.
  *
  * **Пример**
  *
@@ -30,6 +31,7 @@ module.exports = require('enb/lib/build-flow').create()
     .defineOption('exportName', 'BEMHTML')
     .defineOption('devMode', true)
     .defineOption('cache', true)
+    .defineOption('asyncify', false)
     .useFileList('bemhtml')
     .builder(function(sourceFiles) {
         var _this = this;
@@ -51,6 +53,7 @@ module.exports = require('enb/lib/build-flow').create()
                 devMode: this._devMode,
                 cache: this._cache,
                 exportName: this._exportName,
+                asyncify: this._asyncify,
                 async: false
             };
         }
