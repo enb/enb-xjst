@@ -27,7 +27,7 @@
         "sibling": ">= 0.1.1",
         "vow": ">= 0.3.10",
         "vow-fs": ">= 0.2.3",
-        "xjst": "~0.4.20",
+        "xjst": "0.5.18",
         "ometajs": "~3.3.2"
     },
     "devDependencies" : {
