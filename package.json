@@ -28,7 +28,7 @@
         "vow": ">= 0.3.10",
         "vow-fs": ">= 0.2.3",
         "xjst": "0.5.18",
-        "ometajs": "~3.3.2"
+        "ometajs": "3.3.4"
     },
     "devDependencies" : {
         "enb": ">= 0.8.22",
