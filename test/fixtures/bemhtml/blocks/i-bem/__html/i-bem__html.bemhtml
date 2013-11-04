@@ -1,4 +1,4 @@
-!function() {
+!function oninit() {
 
 var BEM_ = {},
     toString = Object.prototype.toString,
@@ -303,7 +303,7 @@ this._mode === '' {
 
         while(i < l) {
             var newCtx = v[i++];
-            apply(this.ctx = newCtx === null ? '' : newCtx);
+            apply(this.ctx = newCtx == null ? '' : newCtx);
         }
 
         prevNotNewList || (this.position = prevPos);
@@ -371,8 +371,11 @@ default: {
                     // Transform mix to the single-item array if it's not array
                     if (!this._.isArray(mix)) mix = [mix];
                     for (var i = 0; i < mix.length; i++) {
-                        var mixItem = mix[i],
-                            hasItem = mixItem.block || mixItem.elem,
+                        var mixItem = mix[i];
+
+                        if (!mixItem) continue;
+
+                        var hasItem = mixItem.block || mixItem.elem,
                             block = mixItem.block || mixItem._block || _this.block,
                             elem = mixItem.elem || mixItem._elem || _this.elem;
 
