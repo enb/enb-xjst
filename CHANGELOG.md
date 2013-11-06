@@ -1,3 +1,7 @@
+Версия 0.2.0:
+ * Переход на `xjst@0.5.x`.
+ * Обновлены `vow` и `ometajs`.
+
 Версия 0.1.1:
  * Исправлена `BEMHTML.apply(undefined)` (@an9eldust).
 
