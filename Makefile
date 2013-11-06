@@ -4,20 +4,26 @@ JSCS = $(BIN)/jscs
 NPM = npm
 
 .PHONY: validate
-validate: node_modules lint test
-
-.PHONY: test
-test: clean node_modules
-	npm run-script func-test
+validate: lint test
 
 .PHONY: lint
-lint:
+lint: node_modules
 	$(JSHINT) .
 	$(JSCS) .
 
+.PHONY: test
+test: node_modules clean build
+	npm run-script func-test
+
+.PHONY: build
+build: node_modules
+	cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make --no-cache
+	cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make --no-cache
+
 .PHONY: clean
-clean:
-	npm run-script clean
+clean: node_modules
+	cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make clean
+	cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make clean
 
 .PHONY: node_modules
 node_modules:

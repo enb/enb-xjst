@@ -42,11 +42,7 @@
     "scripts": {
         "test": "make validate",
         "lint": "make lint",
-        "func-test": "npm run-script build-bemhtml && npm run-script build-bemtree && ./node_modules/.bin/mocha -u bdd -R spec --recursive test/func",
-        "build-bemhtml": "cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make -n",
-        "build-bemtree": "cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make -n",
-        "clean": "npm run-script clean-build-bemhtml && npm run-script clean-build-bemtree",
-        "clean-bemhtml": "cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make clean",
-        "clean-bemtree": "cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make clean"
+        "build": "make build",
+        "clean": "make clean"
     }
 }
