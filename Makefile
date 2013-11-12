@@ -13,7 +13,7 @@ lint: node_modules
 
 .PHONY: test
 test: node_modules clean build
-	npm run-script func-test
+	./node_modules/.bin/mocha -u bdd -R spec --recursive test/func
 
 .PHONY: build
 build: node_modules
