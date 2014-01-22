@@ -31,10 +31,11 @@
     },
     "devDependencies" : {
         "enb": ">= 0.8.22",
+        "enb-validate-code": "0.0.1",
         "mocha": "1.14.0",
         "chai": "1.8.1",
         "jshint": "2.3.0",
-        "jscs": "1.0.11"
+        "jscs": "1.2.4"
     },
     "peerDependencies": {
         "enb": ">= 0.8.22"

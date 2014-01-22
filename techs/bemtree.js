@@ -28,7 +28,7 @@ module.exports = require('./bemhtml').buildFlow()
     .defineOption('async', true)
     .useFileList('bemtree.xjst')
     .methods({
-        _getOptions: function() {
+        _getOptions: function () {
             return {
                 devMode: this._devMode,
                 exportName: this._exportName,

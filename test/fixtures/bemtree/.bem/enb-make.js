@@ -1,7 +1,7 @@
 var ENB_BEMHTML = '../../../../';
 
-module.exports = function(config) {
-    config.node('page', function(nodeConfig) {
+module.exports = function (config) {
+    config.node('page', function (nodeConfig) {
         nodeConfig.addTechs([
             new (require('enb/techs/levels'))({ levels: getLevels(config) }),
             new (require('enb/techs/files'))(),
@@ -20,7 +20,7 @@ module.exports = function(config) {
 function getLevels(config) {
     return [
         'blocks'
-    ].map(function(level) {
+    ].map(function (level) {
         return config.resolvePath(level);
     });
 }

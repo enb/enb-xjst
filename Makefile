@@ -9,7 +9,7 @@ validate: lint test
 .PHONY: lint
 lint: node_modules
 	$(JSHINT) .
-	$(JSCS) .
+	$(JSCS) -c .jscs.js .
 
 .PHONY: test
 test: node_modules clean build
