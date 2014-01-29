@@ -1,4 +1,4 @@
-enb-bemhtml [![Build Status](https://travis-ci.org/enb-make/enb-bemhtml.png?branch=master)](https://travis-ci.org/enb-make/enb-bemhtml) [![NPM version](https://badge.fury.io/js/enb-bemhtml.png)](http://badge.fury.io/js/enb-bemhtml)
+enb-bemhtml [![NPM version](https://badge.fury.io/js/enb-bemhtml.png)](http://badge.fury.io/js/enb-bemhtml) [![Build Status](https://travis-ci.org/enb-make/enb-bemhtml.png?branch=master)](https://travis-ci.org/enb-make/enb-bemhtml) [![Dependency Status](https://gemnasium.com/enb-make/enb-bemhtml.png)](https://gemnasium.com/enb-make/enb-bemhtml)
 ===========
 
 Поддержка BEMHTML для ENB. Пакет содержит `enb-bemhtml/techs/bemhtml` и `enb-bemhtml/techs/bemtree` технологии.
