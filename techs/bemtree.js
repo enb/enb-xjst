@@ -32,7 +32,7 @@ module.exports = require('./bemhtml').buildFlow()
             return {
                 devMode: this._devMode,
                 exportName: this._exportName,
-                async: this._async
+                applyFuncName: this._async ? 'applyAsync' : 'apply'
             };
         }
     })

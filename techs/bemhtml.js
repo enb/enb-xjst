@@ -50,8 +50,7 @@ module.exports = require('enb/lib/build-flow').create()
             return {
                 devMode: this._devMode,
                 cache: this._cache,
-                exportName: this._exportName,
-                async: false
+                exportName: this._exportName
             };
         }
     })
