@@ -1,5 +1,3 @@
-require('chai').should();
-
 describe('functional', function () {
     describe('bemtree', function () {
         it('should builds simple view of page in dev mode', function () {
@@ -8,7 +6,7 @@ describe('functional', function () {
             var view = JSON.stringify(require('../../examples/bemtree/result/view.json'));
 
             BEMTREE.apply(data).then(function (res) {
-                JSON.stringify(res).should.equal(view);
+                JSON.stringify(res).must.equal(view);
             }).done();
         });
 
@@ -18,7 +16,7 @@ describe('functional', function () {
             var view = JSON.stringify(require('../../examples/bemtree/result/view.json'));
 
             BEMTREE.apply(data).then(function (res) {
-                JSON.stringify(res).should.equal(view);
+                JSON.stringify(res).must.equal(view);
             }).done();
         });
     });

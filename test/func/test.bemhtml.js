@@ -1,7 +1,5 @@
 var fs = require('fs');
 
-require('chai').should();
-
 describe('functional', function () {
     describe('bemhtml', function () {
         describe('page', function () {
@@ -10,7 +8,7 @@ describe('functional', function () {
                 var bemjson = require('../../examples/bemhtml/data/page.json');
                 var html = fs.readFileSync('./examples/bemhtml/result/page.html', 'utf8');
 
-                BEMHTML.apply(bemjson).should.equal(html);
+                BEMHTML.apply(bemjson).must.equal(html);
             });
 
             it('build simple page in production mode', function () {
@@ -18,7 +16,7 @@ describe('functional', function () {
                 var bemjson = require('../../examples/bemhtml/data/page.json');
                 var html = fs.readFileSync('./examples/bemhtml/result/page.html', 'utf8');
 
-                BEMHTML.apply(bemjson).should.equal(html);
+                BEMHTML.apply(bemjson).must.equal(html);
             });
         });
     });

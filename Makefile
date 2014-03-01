@@ -1,6 +1,7 @@
 BIN = ./node_modules/.bin
 JSHINT = $(BIN)/jshint
 JSCS = $(BIN)/jscs
+MOCHA = $(BIN)/mocha
 NPM = npm
 
 .PHONY: validate
@@ -13,7 +14,7 @@ lint: node_modules
 
 .PHONY: test
 test: node_modules clean build
-	./node_modules/.bin/mocha -u bdd -R spec --recursive test/func
+	$(MOCHA) test/func
 
 .PHONY: build
 build: node_modules
