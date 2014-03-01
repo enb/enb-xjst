@@ -25,14 +25,13 @@ module.exports = require('./bemhtml').buildFlow()
     .target('target', '?.bemtree.xjst.js')
     .defineOption('exportName', 'BEMTREE')
     .defineOption('devMode', true)
-    .defineOption('async', true)
     .useFileList('bemtree.xjst')
     .methods({
         _getOptions: function () {
             return {
                 devMode: this._devMode,
                 exportName: this._exportName,
-                applyFuncName: this._async ? 'applyAsync' : 'apply'
+                applyFuncName: 'apply'
             };
         }
     })
