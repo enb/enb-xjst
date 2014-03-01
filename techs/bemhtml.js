@@ -28,6 +28,7 @@ module.exports = require('enb/lib/build-flow').create()
     .name('bemhtml')
     .target('target', '?.bemhtml.js')
     .defineOption('exportName', 'BEMHTML')
+    .defineOption('applyFuncName', 'apply')
     .defineOption('devMode', true)
     .defineOption('cache', true)
     .useFileList('bemhtml')
@@ -50,7 +51,8 @@ module.exports = require('enb/lib/build-flow').create()
             return {
                 devMode: this._devMode,
                 cache: this._cache,
-                exportName: this._exportName
+                exportName: this._exportName,
+                applyFuncName: this._applyFuncName
             };
         }
     })
