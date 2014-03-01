@@ -30,7 +30,7 @@ module.exports = require('enb/lib/build-flow').create()
     .defineOption('exportName', 'BEMHTML')
     .defineOption('applyFuncName', 'apply')
     .defineOption('devMode', true)
-    .defineOption('cache', true)
+    .defineOption('cache', false)
     .useFileList('bemhtml')
     .builder(function (sourceFiles) {
         var _this = this;
