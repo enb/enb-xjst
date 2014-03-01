@@ -99,7 +99,7 @@ exports.applyTree = BEMContext.apply = function _apply() {
     return ctx.apply();
 };
 
-exports.applyAsync = BEMContext.applyAsync = function() {
+exports.apply = BEMContext.apply = function() {
     var queue = [],
         ctx = new BEMContext(this, apply),
         result;
