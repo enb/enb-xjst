@@ -1,23 +1,31 @@
 var fs = require('fs');
+var TestTargets = require('../lib/test-targets').TestTargets;
+var targets = new TestTargets('bemhtml', [
+    'page/page.dev.bemhtml.js',
+    'page/page.prod.bemhtml.js'
+]);
+var bemjson = require('../../examples/bemhtml/data/page.json');
+var html = fs.readFileSync('./examples/bemhtml/result/page.html', 'utf8');
 
-describe('functional', function () {
-    describe('bemhtml', function () {
-        describe('page', function () {
-            it('build simple page in dev mode', function () {
-                var BEMHTML = require('../../examples/bemhtml/page/page.dev.bemhtml').BEMHTML;
-                var bemjson = require('../../examples/bemhtml/data/page.json');
-                var html = fs.readFileSync('./examples/bemhtml/result/page.html', 'utf8');
-
-                BEMHTML.apply(bemjson).must.equal(html);
+describe('bemhtml', function () {
+    beforeEach(function (done) {
+        return targets.build()
+            .then(function () {
+                done();
             });
+    });
 
-            it('build simple page in production mode', function () {
-                var BEMHTML = require('../../examples/bemhtml/page/page.prod.bemhtml').BEMHTML;
-                var bemjson = require('../../examples/bemhtml/data/page.json');
-                var html = fs.readFileSync('./examples/bemhtml/result/page.html', 'utf8');
+    describe('page', function () {
+        it('build simple page in dev mode', function () {
+            var BEMHTML = require('../../examples/bemhtml/page/page.dev.bemhtml').BEMHTML;
 
-                BEMHTML.apply(bemjson).must.equal(html);
-            });
+            BEMHTML.apply(bemjson).must.equal(html);
+        });
+
+        it('build simple page in production mode', function () {
+            var BEMHTML = require('../../examples/bemhtml/page/page.prod.bemhtml').BEMHTML;
+
+            BEMHTML.apply(bemjson).must.equal(html);
         });
     });
 });
