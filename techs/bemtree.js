@@ -17,7 +17,7 @@
  * **Пример**
  *
  * ```javascript
- * nodeConfig.addTech(require('enb-bemhtml/techs/bemtree'));
+ * nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
  * ```
  */
 module.exports = require('./bemhtml').buildFlow()

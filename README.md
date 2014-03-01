@@ -1,7 +1,7 @@
-enb-bemhtml [![NPM version](https://badge.fury.io/js/enb-bemhtml.png)](http://badge.fury.io/js/enb-bemhtml) [![Build Status](https://travis-ci.org/enb-make/enb-bemhtml.png?branch=master)](https://travis-ci.org/enb-make/enb-bemhtml) [![Dependency Status](https://gemnasium.com/enb-make/enb-bemhtml.png)](https://gemnasium.com/enb-make/enb-bemhtml)
-===========
+enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.png)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://travis-ci.org/enb-make/enb-xjst.png?branch=master)](https://travis-ci.org/enb-make/enb-xjst) [![Dependency Status](https://gemnasium.com/enb-make/enb-xjst.png)](https://gemnasium.com/enb-make/enb-xjst)
+========
 
-Поддержка BEMHTML для ENB. Пакет содержит `enb-bemhtml/techs/bemhtml` и `enb-bemhtml/techs/bemtree` технологии.
+Поддержка BEMHTML для ENB. Пакет содержит `enb-xjst/techs/bemhtml` и `enb-xjst/techs/bemtree` технологии.
 
 **Внимание**: для нового js-совместимого синтаксиса следует использовать [`enb-bemxjst`](https://github.com/enb-make/enb-bemxjst.git).
 
@@ -9,7 +9,7 @@ enb-bemhtml [![NPM version](https://badge.fury.io/js/enb-bemhtml.png)](http://ba
 ----------
 
 ```
-npm install enb-bemhtml
+npm install enb-xjst
 ```
 
 bemhtml
@@ -29,7 +29,7 @@ bemhtml
 **Пример**
 
 ```javascript
-nodeConfig.addTech(require('enb-bemhtml/techs/bemhtml'));
+nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
 ```
 
 bemtree
@@ -48,5 +48,5 @@ bemtree
 **Пример**
 
 ```javascript
-nodeConfig.addTech(require('enb-bemhtml/techs/bemtree'));
+nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 ```

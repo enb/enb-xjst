@@ -1,14 +1,14 @@
 {
   "author" : "Marat Dulin <mdevils@yandex.ru>",
-  "description" : "BEMHTML support for ENB",
-  "name" : "enb-bemhtml",
+  "description" : "xjst support for ENB",
+  "name" : "enb-xjst",
   "version" : "0.2.1",
-  "repository": "git://github.com/enb-make/enb-bemhtml",
-  "homepage": "https://github.com/enb-make/enb-bemhtml",
-  "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
+  "repository": "git://github.com/enb-make/enb-xjst",
+  "homepage": "https://github.com/enb-make/enb-xjst",
+  "bugs": "https://github.com/enb-make/enb-xjst/issues",
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/enb-make/enb-bemhtml/blob/master/LICENSE"
+    "url": "https://github.com/enb-make/enb-xjst/blob/master/LICENSE"
   }],
   "contributors": [
     {

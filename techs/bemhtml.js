@@ -18,7 +18,7 @@
  * **Пример**
  *
  * ```javascript
- * nodeConfig.addTech(require('enb-bemhtml/techs/bemhtml'));
+ * nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
  * ```
  */
 var Vow = require('vow');
