@@ -17,13 +17,13 @@ test: node_modules clean build
 
 .PHONY: build
 build: node_modules
-	cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make --no-cache
-	cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make --no-cache
+	cd examples/bemhtml && ../../node_modules/.bin/enb make --no-cache
+	cd examples/bemtree && ../../node_modules/.bin/enb make --no-cache
 
 .PHONY: clean
 clean: node_modules
-	cd test/fixtures/bemhtml && ../../../node_modules/.bin/enb make clean
-	cd test/fixtures/bemtree && ../../../node_modules/.bin/enb make clean
+	cd examples/bemhtml && ../../node_modules/.bin/enb make clean
+	cd examples/bemtree && ../../node_modules/.bin/enb make clean
 
 .PHONY: node_modules
 node_modules:
