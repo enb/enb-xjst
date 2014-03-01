@@ -24,6 +24,7 @@ module.exports = require('./bemhtml').buildFlow()
     .name('bemtree')
     .target('target', '?.bemtree.xjst.js')
     .defineOption('exportName', 'BEMTREE')
+    .defineOption('applyFuncName', 'apply')
     .defineOption('devMode', true)
     .useFileList('bemtree.xjst')
     .methods({
@@ -31,7 +32,7 @@ module.exports = require('./bemhtml').buildFlow()
             return {
                 devMode: this._devMode,
                 exportName: this._exportName,
-                applyFuncName: 'apply'
+                applyFuncName: this._applyFuncName
             };
         }
     })
