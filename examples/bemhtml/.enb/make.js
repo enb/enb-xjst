@@ -7,7 +7,7 @@ module.exports = function (config) {
             new (require('enb/techs/files'))(),
             new (require('enb/techs/file-provider'))({ target: '?.bemdecl.js' }),
             new (require('enb/techs/deps-old'))(),
-            new (require(ENB_BEMHTML + '/techs/bemhtml'))({ target: '?.dev.bemhtml.js', devMode: true }),
+            new (require(ENB_BEMHTML + 'techs/bemhtml'))({ target: '?.dev.bemhtml.js', devMode: true }),
             new (require(ENB_BEMHTML + 'techs/bemhtml'))({ target: '?.prod.bemhtml.js', devMode: false })
         ]);
         nodeConfig.addTargets([
