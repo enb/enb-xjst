@@ -1,48 +1,48 @@
 {
-    "author" : "Marat Dulin <mdevils@yandex.ru>",
-    "description" : "BEMHTML support for ENB",
-    "name" : "enb-bemhtml",
-    "version" : "0.2.1",
-    "repository": "git://github.com/enb-make/enb-bemhtml",
-    "homepage": "https://github.com/enb-make/enb-bemhtml",
-    "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
-    "licenses": [{
-        "type": "MIT",
-        "url": "https://github.com/enb-make/enb-bemhtml/blob/master/LICENSE"
-    }],
-    "contributors": [
-        {
-            "name": "Marat Dulin",
-            "email": "mdevils@yandex.ru"
-        },
-        {
-            "name": "Andrew Abramov",
-            "email": "andrewblond@yandex.com"
-        }
-    ],
-    "engines": {
-        "node": ">= 0.8.0"
+  "author" : "Marat Dulin <mdevils@yandex.ru>",
+  "description" : "BEMHTML support for ENB",
+  "name" : "enb-bemhtml",
+  "version" : "0.2.1",
+  "repository": "git://github.com/enb-make/enb-bemhtml",
+  "homepage": "https://github.com/enb-make/enb-bemhtml",
+  "bugs": "https://github.com/enb-make/enb-bemhtml/issues",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/enb-make/enb-bemhtml/blob/master/LICENSE"
+  }],
+  "contributors": [
+    {
+      "name": "Marat Dulin",
+      "email": "mdevils@yandex.ru"
     },
-    "dependencies" : {
-        "sibling": "0.1.1",
-        "vow": "0.3.12",
-        "bem-bl": "git://github.com/bem/bem-bl.git#v1.2.0"
-    },
-    "devDependencies" : {
-        "enb": ">= 0.8.22",
-        "enb-validate-code": "0.0.1",
-        "mocha": "1.17.1",
-        "must": "0.11.0",
-        "jshint": "2.4.4",
-        "jscs": "1.3.0"
-    },
-    "peerDependencies": {
-        "enb": ">= 0.8.22"
-    },
-    "scripts": {
-        "test": "make validate",
-        "lint": "make lint",
-        "build": "make build",
-        "clean": "make clean"
+    {
+      "name": "Andrew Abramov",
+      "email": "andrewblond@yandex.com"
     }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies" : {
+    "sibling": "0.1.1",
+    "vow": "0.3.12",
+    "bem-bl": "git://github.com/bem/bem-bl.git#v1.2.0"
+  },
+  "devDependencies" : {
+    "enb": ">= 0.8.22",
+    "enb-validate-code": "0.0.1",
+    "mocha": "1.17.1",
+    "must": "0.11.0",
+    "jshint": "2.4.4",
+    "jscs": "1.3.0"
+  },
+  "peerDependencies": {
+    "enb": ">= 0.8.22"
+  },
+  "scripts": {
+    "test": "make validate",
+    "lint": "make lint",
+    "build": "make build",
+    "clean": "make clean"
+  }
 }
