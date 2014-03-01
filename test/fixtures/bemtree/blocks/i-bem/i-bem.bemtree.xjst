@@ -19,6 +19,11 @@ function BEMContext(context, apply_) {
 
     // Stub out fields that will be used later
     this._start = true;
+    this._mode = '';
+    this.block = undefined;
+    this.elem = undefined;
+    this.mods = undefined;
+    this.elemMods = undefined;
 };
 
 BEMContext.prototype.isArray = function isArray(obj) {
