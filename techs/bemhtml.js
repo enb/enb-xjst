@@ -38,12 +38,15 @@ module.exports = require('enb/lib/build-flow').create()
                 return vowFs.read(file.fullname, 'utf8');
             }))
             .then(function (sources) {
-                _this.node.getLogger().log('Calm down, OmetaJS is running...');
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
-                return bemhtmlProcessor.process(sources.join('\n'), _this._getOptions()).then(function (res) {
-                    bemhtmlProcessor.dispose();
-                    return res;
-                });
+
+                _this.node.getLogger().log('Calm down, OmetaJS is running...');
+
+                return bemhtmlProcessor.process(sources.join('\n'), _this._getOptions())
+                    .then(function (res) {
+                        bemhtmlProcessor.dispose();
+                        return res;
+                    });
             });
     })
     .methods({
