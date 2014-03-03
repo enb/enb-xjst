@@ -12,7 +12,7 @@
  *   (его предоставляет технология `files`). По умолчанию — `?.files`.
  * * *String* **exportName** — Имя переменной-обработчика BEMHTML. По умолчанию — `'BEMHTML'`.
  * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMHTML. По умолчанию — `'apply'`.
- * * *Boolean* **devMode** — Development-режим. По умолчанию зависит от YENV (true, если YENV=development).
+ * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
  * * *Boolean* **cache** — Кеширование. По умолчанию — `false`.
  *
  * **Пример**
@@ -30,7 +30,7 @@ module.exports = require('enb/lib/build-flow').create()
     .target('target', '?.bemhtml.js')
     .defineOption('exportName', 'BEMHTML')
     .defineOption('applyFuncName', 'apply')
-    .defineOption('devMode', 'development' === process.env.YENV)
+    .defineOption('devMode', true)
     .defineOption('cache', false)
     .useFileList('bemhtml')
     .builder(function (sourceFiles) {

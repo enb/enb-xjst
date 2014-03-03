@@ -12,7 +12,7 @@
  *   (его предоставляет технология `files`). По умолчанию — `?.files`.
  * * *String* **exportName** — Имя переменной-обработчика BEMTREE. По умолчанию — `'BEMTREE'`.
  * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMTREE. По умолчанию — `'apply'`.
- * * *Boolean* **devMode** — Development-режим. По умолчанию зависит от YENV (true, если YENV=development).
+ * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
  *
  * **Пример**
  *

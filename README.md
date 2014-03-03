@@ -30,7 +30,7 @@ bemhtml
 * *String* **filesTarget** — files-таргет, на основе которого получается список исходных файлов (его предоставляет технология `files`). По умолчанию — `?.files`.
 * *String* **exportName** — Имя переменной-обработчика BEMHTML. По умолчанию — `'BEMHTML'`.
 * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMHTML. По умолчанию — `'apply'`.
-* *Boolean* **devMode** — Development-режим. По умолчанию зависит от YENV (true, если YENV=development).
+* *Boolean* **devMode** — Development-режим.  По умолчанию `true`.
 * *Boolean* **cache** — Кеширование. По умолчанию — `false`.
 
 **Пример**
@@ -50,7 +50,7 @@ bemtree
 * *String* **filesTarget** — files-таргет, на основе которого получается список исходных файлов (его предоставляет технология `files`). По умолчанию — `?.files`.
 * *String* **exportName** — Имя переменной-обработчика BEMTREE. По умолчанию — `'BEMTREE'`.
 * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMTREE. По умолчанию — `'apply'`.
-* *Boolean* **devMode** — Development-режим. По умолчанию зависит от YENV (true, если YENV=development).
+* *Boolean* **devMode** — Development-режим. По умолчанию `true`.
 
 **Пример**
 
