@@ -32,12 +32,18 @@ module.exports = require('enb/lib/build-flow').create()
     .defineOption('cache', true)
     .useFileList('bemhtml')
     .builder(function(sourceFiles) {
-        var _this = this;
+        var _this = this,
+            warning = 'The `enb-bemhtml` package has been renamed to `enb-xjst`.';
+
+        warning += ' And the techs `enb-bemhtml/techs/*` are now `enb-xjst/techs/*`.';
+        warning += ' Please follow https://github.com/enb-make/enb-xjst.';
+
+        _this.node.getLogger().log(warning);
+
         return Vow.all(sourceFiles.map(function(file) {
                 return vowFs.read(file.fullname, 'utf8');
             }))
             .then(function(sources) {
-                _this.node.getLogger().log('Calm down, OmetaJS is running...');
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
                 return bemhtmlProcessor.process(sources.join('\n'), _this._getOptions()).then(function(res) {
                     bemhtmlProcessor.dispose();
