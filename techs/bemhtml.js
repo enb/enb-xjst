@@ -22,8 +22,8 @@
  * nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
  * ```
  */
-var Vow = require('vow');
-var vowFs = require('enb/lib/fs/async-fs');
+var vow = require('vow');
+var vfs = require('enb/lib/fs/async-fs');
 var BEMHTML = require('bem-bl/blocks-common/i-bem/__html/lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
@@ -36,8 +36,8 @@ module.exports = require('enb/lib/build-flow').create()
     .useFileList('bemhtml')
     .builder(function (sourceFiles) {
         var _this = this;
-        return Vow.all(sourceFiles.map(function (file) {
-                return vowFs.read(file.fullname, 'utf8');
+        return vow.all(sourceFiles.map(function (file) {
+                return vfs.read(file.fullname, 'utf8');
             }))
             .then(function (sources) {
                 var bemhtmlProcessor = BemhtmlProcessor.fork();

@@ -43,7 +43,7 @@ block header {
 
 function doRequestP() {
     var body = '',
-        defer = Vow.promise();
+        deferred = Vow.defer();
 
     log('>>> do request');
 
@@ -56,17 +56,16 @@ function doRequestP() {
             log('request end');
 
             setTimeout(function() {
-//                defer.reject(new Error('Blah!'));
-                defer.fulfill(JSON.parse(body));
+                deferred.resolve(JSON.parse(body));
             }, 300);
         });
 
         res.on('error', function(err) {
-            defer.reject(err);
+            deferred.reject(err);
         });
     });
 
     req.end();
 
-    return defer;
+    return deferred.promise();
 }
