@@ -1,4 +1,4 @@
-enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://travis-ci.org/enb-make/enb-xjst.png?branch=master)](https://travis-ci.org/enb-make/enb-xjst) [![Dependency Status](https://gemnasium.com/enb-make/enb-xjst.png)](https://gemnasium.com/enb-make/enb-xjst)
+enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://travis-ci.org/enb-make/enb-xjst.svg?branch=master)](https://travis-ci.org/enb-make/enb-xjst) [![Dependency Status](https://gemnasium.com/enb-make/enb-xjst.svg)](https://gemnasium.com/enb-make/enb-xjst)
 ========
 
 Поддержка технологий на&nbsp;основе [`xjst`](https://github.com/bem/xjst).
