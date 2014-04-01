@@ -24,7 +24,7 @@
  */
 var Vow = require('vow');
 var vowFs = require('enb/lib/fs/async-fs');
-var BEMHTML = require('bemhtml/blocks-common/i-bem/__html/lib/bemhtml');
+var BEMHTML = require('bem-bl/blocks-common/i-bem/__html/lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('bemhtml')
