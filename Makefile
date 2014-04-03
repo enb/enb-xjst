@@ -2,6 +2,7 @@ BIN = ./node_modules/.bin
 JSHINT = $(BIN)/jshint
 JSCS = $(BIN)/jscs
 MOCHA = $(BIN)/mocha
+BOWER = $(BIN)/bower
 
 .PHONY: validate
 validate: lint test
@@ -16,7 +17,7 @@ test: npm_deps clean examples
 	$(MOCHA) test/func
 
 .PHONY: examples
-examples: npm_deps
+examples: npm_deps bower_deps
 	cd examples/bemhtml && ../../node_modules/.bin/enb make --no-cache
 	cd examples/bemtree && ../../node_modules/.bin/enb make --no-cache
 
@@ -24,6 +25,10 @@ examples: npm_deps
 clean: npm_deps
 	cd examples/bemhtml && ../../node_modules/.bin/enb make clean
 	cd examples/bemtree && ../../node_modules/.bin/enb make clean
+
+.PHONY: bower_deps
+bower_deps: npm_deps
+	cd examples && ../$(BOWER) install
 
 .PHONY: npm_deps
 npm_deps:

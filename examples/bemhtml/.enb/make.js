@@ -19,7 +19,8 @@ module.exports = function (config) {
 
 function getLevels(config) {
     return [
-        'blocks'
+        { path: '../bower_components/bem-bl/blocks-common', check: false },
+        { path: '../bower_components/bem-bl/blocks-desktop', check: false }
     ].map(function (level) {
         return config.resolvePath(level);
     });
