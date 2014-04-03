@@ -1,10 +1,16 @@
+var path = require('path');
+var root = path.resolve('./examples/bemtree');
+var devTarget = path.join('page', 'page.dev.bemtree.xjst.js');
+var prodTarget = path.join('page', 'page.prod.bemtree.xjst.js');
+var pathToDev = path.join(root, devTarget);
+var pathToProd = path.join(root, prodTarget);
+var data = require(path.join(root, 'data', 'data.json'));
+var view = require(path.join(root, 'result', 'view.json'));
 var TestTargets = require('../lib/test-targets').TestTargets;
 var targets = new TestTargets('bemtree', [
-    'page/page.dev.bemtree.xjst',
-    'page/page.prod.bemtree.xjst'
+    devTarget,
+    prodTarget
 ]);
-var data = require('../../examples/bemtree/data/data.json');
-var view = JSON.stringify(require('../../examples/bemtree/result/view.json'));
 
 describe('bemtree', function () {
     beforeEach(function (done) {
@@ -14,19 +20,29 @@ describe('bemtree', function () {
             });
     });
 
-    it('should builds simple view of page in dev mode', function () {
-        var BEMTREE = require('../../examples/bemtree/page/page.dev.bemtree.xjst').BEMTREE;
+    it('must build simple view of page in dev mode', function (done) {
+        var BEMTREE = require(pathToDev).BEMTREE;
 
-        BEMTREE.apply(data).then(function (res) {
-            JSON.stringify(res).must.equal(view);
-        }).done();
+        BEMTREE.apply(data)
+            .then(function (res) {
+                res.must.eql(view);
+                done();
+            })
+            .fail(function (err) {
+                done(err);
+            });
     });
 
-    it('should builds simple view of page in production mode', function () {
-        var BEMTREE = require('../../examples/bemtree/page/page.prod.bemtree.xjst').BEMTREE;
+    it('must build simple view of page in production mode', function (done) {
+        var BEMTREE = require(pathToProd).BEMTREE;
 
-        BEMTREE.apply(data).then(function (res) {
-            JSON.stringify(res).must.equal(view);
-        }).done();
+        BEMTREE.apply(data)
+            .then(function (res) {
+                res.must.eql(view);
+                done();
+            })
+            .fail(function (err) {
+                done(err);
+            });
     });
 });
