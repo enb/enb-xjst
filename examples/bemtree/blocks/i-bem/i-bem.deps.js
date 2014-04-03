@@ -1,5 +1,5 @@
 ({
     mustDeps : [
-        { block : 'i-promise' }
+        { block : 'i-vow' }
     ]
 })

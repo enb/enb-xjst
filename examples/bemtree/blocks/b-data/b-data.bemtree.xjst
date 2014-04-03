@@ -1,0 +1,9 @@
+block b-data {
+    
+    content: {
+        return this.doAsync(function () {
+            return 'some async result';
+        });
+    }
+    
+}

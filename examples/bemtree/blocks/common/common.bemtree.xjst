@@ -1,7 +1,0 @@
-function log() {
-    console.log.apply(null, arguments);
-}
-
-function dump(ctx, note) {
-    log('->', ctx.block + (ctx.elem? '__' + ctx.elem : ''), ctx._mode, note? note : '');
-}

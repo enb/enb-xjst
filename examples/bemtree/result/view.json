@@ -1,15 +1,9 @@
 {
     "block": "b-page",
-    "title": "Page Title",
-    "head": [
-        { "elem": "css", "url": "_page.css" },
-        { "elem": "js", "url": "_page.js" }
-    ],
     "content": [
         {
-            "block": "title",
-            "content": "Page Title"
-        },
-        "Page content"
+            "block": "b-data",
+            "content": "some async result"
+        }
     ]
 }
