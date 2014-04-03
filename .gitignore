@@ -1,1 +1,4 @@
 node_modules
+examples/*/.enb/tmp
+examples/*/page/*
+!examples/*/page/page.bemdecl.js
