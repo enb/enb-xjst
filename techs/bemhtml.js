@@ -24,6 +24,7 @@
  */
 var vow = require('vow');
 var vfs = require('enb/lib/fs/async-fs');
+var pinpoint = require('pinpoint');
 var BEMHTML = require('bem-bl/blocks-common/i-bem/__html/lib/bemhtml');
 
 module.exports = require('enb/lib/build-flow').create()
@@ -41,13 +42,31 @@ module.exports = require('enb/lib/build-flow').create()
             }))
             .then(function (sources) {
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
+                var source = sources.join('\n');
 
                 _this.node.getLogger().log('Calm down, OmetaJS is running...');
 
-                return bemhtmlProcessor.process(sources.join('\n'), _this._getOptions())
+                return bemhtmlProcessor.process(source, _this._getOptions())
                     .then(function (res) {
+                        var result = res.result;
+                        var error = res.error;
+
                         bemhtmlProcessor.dispose();
-                        return res;
+
+                        if (result) {
+                            return result;
+                        }
+
+                        if (error) {
+                            var message = error.message.split('\n')[0].replace(/at\:\s(\d)+\:(\d)+/, '');
+                            var context = pinpoint(source, {
+                                line: error.line,
+                                column: error.column,
+                                indent: '    '
+                            });
+
+                            throw new SyntaxError(message + '\n' + context);
+                        }
                     });
             });
     })
@@ -65,6 +84,10 @@ module.exports = require('enb/lib/build-flow').create()
 
 var BemhtmlProcessor = require('sibling').declare({
     process: function (source, options) {
-        return BEMHTML.translate(source, options);
+        try {
+            return { result: BEMHTML.translate(source, options) };
+        } catch (e) {
+            return { error: e };
+        }
     }
 });
