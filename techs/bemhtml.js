@@ -22,6 +22,8 @@
  * nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
  * ```
  */
+
+var path = require('path');
 var vow = require('vow');
 var vfs = require('enb/lib/fs/async-fs');
 var pinpoint = require('pinpoint');
@@ -37,16 +39,24 @@ module.exports = require('enb/lib/build-flow').create()
     .useFileList('bemhtml')
     .builder(function (sourceFiles) {
         var _this = this;
+        var node = this.node;
         return vow.all(sourceFiles.map(function (file) {
-                return vfs.read(file.fullname, 'utf8');
+                return vfs.read(file.fullname, 'utf8')
+                    .then(function (source) {
+                        return {
+                            source: source,
+                            filename: file.fullname
+                        };
+                    });
             }))
-            .then(function (sources) {
+            .then(function (fileSources) {
                 var bemhtmlProcessor = BemhtmlProcessor.fork();
-                var source = sources.join('\n');
+                var sourceMap = SourceMap(fileSources);
+                var code = sourceMap.getCode();
 
-                _this.node.getLogger().log('Calm down, OmetaJS is running...');
+                node.getLogger().log('Calm down, OmetaJS is running...');
 
-                return bemhtmlProcessor.process(source, _this._getOptions())
+                return bemhtmlProcessor.process(code, _this._getOptions())
                     .then(function (res) {
                         var result = res.result;
                         var error = res.error;
@@ -58,14 +68,20 @@ module.exports = require('enb/lib/build-flow').create()
                         }
 
                         if (error) {
-                            var message = error.message.split('\n')[0].replace(/at\:\s(\d)+\:(\d)+/, '');
-                            var context = pinpoint(source, {
-                                line: error.line,
-                                column: error.column,
+                            var original = sourceMap.getOriginal(error.line, error.column);
+                            var message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, '');
+                            var relPath = path.relative(node._root, original.filename);
+                            var context = pinpoint(original.source, {
+                                line: original.line,
+                                column: original.column,
                                 indent: '    '
                             });
 
-                            throw new SyntaxError(message + '\n' + context);
+                            if (relPath.charAt(0) !== '.') {
+                                relPath = './' + relPath;
+                            }
+
+                            throw new SyntaxError(message + ' at ' + relPath + '\n' + context);
                         }
                     });
             });
@@ -91,3 +107,56 @@ var BemhtmlProcessor = require('sibling').declare({
         }
     }
 });
+
+var SourceMap = function (fileSources) {
+    var lastBoundary = 0;
+    var boundaries = [];
+    var filenames = [];
+    var sources = [];
+    var code = '';
+
+    fileSources.forEach(function (fileSource) {
+        var source = fileSource.source;
+
+        lastBoundary += source.split('\n').length;
+
+        boundaries.push(lastBoundary);
+        filenames.push(fileSource.filename);
+        sources.push(source);
+
+        code += '\n' + source;
+    });
+
+    function _getRangeIndexByLineNumber(lineNumber) {
+        if (lineNumber > lastBoundary) {
+            return -1;
+        }
+
+        for (var i = 0; i < boundaries.length; ++i) {
+            if (lineNumber <= boundaries[i]) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    return {
+        getOriginal: function (line, column) {
+            var rangeIndex = _getRangeIndexByLineNumber(line);
+            var lowerBoundary = boundaries[rangeIndex - 1] || 0;
+
+            if (rangeIndex !== -1) {
+                return {
+                    filename: filenames[rangeIndex],
+                    source: sources[rangeIndex],
+                    line: line - lowerBoundary - 1,
+                    column: column
+                };
+            }
+        },
+        getCode: function () {
+            return code;
+        }
+    };
+};
