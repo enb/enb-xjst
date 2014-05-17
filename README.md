@@ -60,6 +60,23 @@ bemtree
 nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 ```
 
+html-from-bemjson
+=================
+
+Собирает *html*-файл с помощью *bemjson* и *bemhtml*.
+
+**Опции**
+
+* *String* **bemhtmlTarget** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
+* *String* **bemjsonTarget** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
+* *String* **destTarget** — Результирующий HTML-файл. По умолчанию — `?.html`.
+
+**Пример**
+
+```javascript
+nodeConfig.addTech(require('enb-bemxjst/techs/html-from-bemjson'));
+```
+
 История изменений
 -----------------
 
