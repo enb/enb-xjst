@@ -42,6 +42,11 @@
     "jscs": "1.4.5"
   },
   "scripts": {
-    "test": "make validate"
+    "test": "npm run lint && npm run func-test",
+    "func-test": "npm run clean && npm run build && mocha test/func",
+    "lint": "jshint . && jscs -c .jscs.js .",
+    "build": "npm run deps && cd examples/bemhtml && enb make --no-cache && cd ../bemtree && enb make --no-cache",
+    "clean": "npm run deps && cd examples/bemhtml && enb make clean && cd ../bemtree && enb make clean",
+    "deps": "cd examples && bower install"
   }
 }
