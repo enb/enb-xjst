@@ -7,12 +7,6 @@ var TestNode = require('enb/lib/test/mocks/test-node');
 var FileList = require('enb/lib/file-list');
 var BEMHTMLTech = require('../../techs/bemhtml');
 var fixturesDirname = path.join(__dirname, '..', 'fixtures', 'bemhtml');
-var files = ['i-bem__html.bemhtml', 'b-page.bemhtml'].map(function (filename) {
-    return {
-        file: filename,
-        content: fs.readFileSync(path.join(fixturesDirname, filename), { encoding: 'utf-8' })
-    };
-});
 var data = {
     block: 'b-page',
     title: 'Page title',
@@ -28,7 +22,12 @@ describe('bemhtml', function () {
     beforeEach(function () {
         fileSystem = new FileSystem([{
             directory: 'blocks',
-            items: files
+            items: ['i-bem__html.bemhtml', 'b-page.bemhtml'].map(function (filename) {
+                return {
+                    file: filename,
+                    content: fs.readFileSync(path.join(fixturesDirname, filename), { encoding: 'utf-8' })
+                };
+            })
         }, {
             directory: 'build',
             items: []

@@ -8,12 +8,6 @@ var TestNode = require('enb/lib/test/mocks/test-node');
 var FileList = require('enb/lib/file-list');
 var BEMTREETech = require('../../techs/bemtree');
 var fixturesDirname = path.join(__dirname, '..', 'fixtures', 'bemtree');
-var files = ['i-bem.bemtree.xjst', 'i-start.bemtree.xjst', 'b-data.bemtree.xjst'].map(function (filename) {
-    return {
-        file: filename,
-        content: fs.readFileSync(path.join(fixturesDirname, filename), { encoding: 'utf-8' })
-    };
-});
 var data = {
     bundleName: 'page',
     title: 'Page Title',
@@ -37,7 +31,12 @@ describe('bemtree', function () {
     beforeEach(function () {
         fileSystem = new FileSystem([{
             directory: 'blocks',
-            items: files
+            items: ['i-bem.bemtree.xjst', 'i-start.bemtree.xjst', 'b-data.bemtree.xjst'].map(function (filename) {
+                return {
+                    file: filename,
+                    content: fs.readFileSync(path.join(fixturesDirname, filename), { encoding: 'utf-8' })
+                };
+            })
         }, {
             directory: 'build',
             items: []
