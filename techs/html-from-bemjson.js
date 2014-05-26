@@ -16,11 +16,11 @@
  * nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
  * ```
  */
-var requireOrEval = require('../lib/fs/require-or-eval');
-var asyncRequire = require('../lib/fs/async-require');
-var dropRequireCache = require('../lib/fs/drop-require-cache');
+var requireOrEval = require('enb/lib/fs/require-or-eval');
+var asyncRequire = require('enb/lib/fs/async-require');
+var dropRequireCache = require('enb/lib/fs/drop-require-cache');
 
-module.exports = require('../lib/build-flow').create()
+module.exports = require('enb/lib/build-flow').create()
     .name('html-from-bemjson')
     .target('destTarget', '?.html')
     .useSourceFilename('bemhtmlTarget', '?.bemhtml.js')
