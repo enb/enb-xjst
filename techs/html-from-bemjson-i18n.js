@@ -6,12 +6,12 @@
  *
  * **Опции**
  *
- * * *String* **bemhtmlTarget** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
- * * *String* **bemjsonTarget** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
- * * *String* **langAllTarget** — Исходный langAll-файл. По умолчанию — `?.lang.all.js`.
- * * *String* **langTarget** — Исходный lang-файл. По умолчанию — `?.lang.{lang}.js`.
+ * * *String* **bemhtmlFile** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
+ * * *String* **bemjsonFile** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
+ * * *String* **langAllFile** — Исходный langAll-файл. По умолчанию — `?.lang.all.js`.
+ * * *String* **langFile** — Исходный lang-файл. По умолчанию — `?.lang.{lang}.js`.
  *   Если параметр lang не указан, берется первый из объявленных в проекте языков
- * * *String* **destTarget** — Результирующий HTML-файл. По умолчанию — `?.{lang}.html`.
+ * * *String* **target** — Результирующий HTML-файл. По умолчанию — `?.{lang}.html`.
  *
  * **Пример**
  *
@@ -33,6 +33,11 @@ module.exports = require('enb/lib/build-flow').create()
     .useSourceFilename('bemjsonTarget', '?.bemjson.js')
     .useSourceFilename('langAllTarget', '?.lang.all.js')
     .useSourceFilename('langTarget', '?.lang.{lang}.js')
+    .optionAlias('bemhtmlTarget', 'bemhtmlFile')
+    .optionAlias('bemjsonTarget', 'bemjsonFile')
+    .optionAlias('langAllTarget', 'langAllFile')
+    .optionAlias('langTarget', 'langFile')
+    .optionAlias('destTarget', 'target')
     .needRebuild(function (cache) {
         return cache.needRebuildFile('bemhtml-file', this.node.resolvePath(this._bemhtmlTarget)) ||
             cache.needRebuildFile('bemjson-file', this.node.resolvePath(this._bemjsonTarget)) ||

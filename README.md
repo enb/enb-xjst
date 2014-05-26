@@ -86,11 +86,11 @@ html-from-bemjson-i18n
 
 **Опции**
 
-* *String* **bemhtmlTarget** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
-* *String* **bemjsonTarget** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
-* *String* **langAllTarget** — Исходный langAll-файл. По умолчанию — `?.lang.all.js`.
-* *String* **langTarget** — Исходный lang-файл. По умолчанию — `?.lang.{lang}.js`. Если параметр lang не указан, берется первый из объявленных в проекте языков
-* *String* **destTarget** — Результирующий HTML-файл. По умолчанию — `?.{lang}.html`.
+* *String* **bemhtmlFile** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
+* *String* **bemjsonFile** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
+* *String* **langAllFile** — Исходный langAll-файл. По умолчанию — `?.lang.all.js`.
+* *String* **langFile** — Исходный lang-файл. По умолчанию — `?.lang.{lang}.js`. Если параметр lang не указан, берется первый из объявленных в проекте языков
+* *String* **target** — Результирующий HTML-файл. По умолчанию — `?.{lang}.html`.
 
 **Пример**
 
