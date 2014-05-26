@@ -1,4 +1,3 @@
-var vm = require('vm');
 var fs = require('fs');
 var path = require('path');
 var vow = require('vow');
@@ -44,24 +43,20 @@ describe('bemhtml', function () {
     });
 
     it('must build simple page in development mode', function (done) {
-        node.runTechAndGetContent(
+        node.runTechAndRequire(
             BEMHTMLTech, {devMode: true}
-        ).spread(function (bemhtmlSource) {
-            var sandbox = {}; vm.runInNewContext(bemhtmlSource, sandbox);
-            var bemhtml = sandbox.BEMHTML;
-            var html = bemhtml.apply(data);
+        ).spread(function (bemhtml) {
+            var html = bemhtml.BEMHTML.apply(data);
 
             html.must.equal(referenceHtml);
         }).then(done, done);
     });
 
     it('must build simple page in production mode', function (done) {
-        node.runTechAndGetContent(
-            BEMHTMLTech, {devMode: false}
-        ).spread(function (bemhtmlSource) {
-            var sandbox = {}; vm.runInNewContext(bemhtmlSource, sandbox);
-            var bemhtml = sandbox.BEMHTML;
-            var html = bemhtml.apply(data);
+        node.runTechAndRequire(
+            BEMHTMLTech, { devMode: false }
+        ).spread(function (bemhtml) {
+            var html = bemhtml.BEMHTML.apply(data);
 
             html.must.equal(referenceHtml);
         }).then(done, done);
