@@ -32,7 +32,7 @@ describe('html-from-bemjson-i18n', function () {
 
     it('must build lang html', function (done) {
         node.runTechAndGetContent(
-            HtmlFromBemjsonI18NTech, { langTarget: '?.lang.en.js' }
+            HtmlFromBemjsonI18NTech, { langFile: '?.lang.en.js' }
         ).spread(function (html) {
             html.must.equal(referenceHtml);
         }).then(done, done);
