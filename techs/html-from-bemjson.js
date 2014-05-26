@@ -6,9 +6,9 @@
  *
  * **Опции**
  *
- * * *String* **bemhtmlTarget** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
- * * *String* **bemjsonTarget** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
- * * *String* **destTarget** — Результирующий HTML-файл. По умолчанию — `?.html`.
+ * * *String* **bemhtmlFile** — Исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
+ * * *String* **bemjsonFile** — Исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
+ * * *String* **target** — Результирующий HTML-файл. По умолчанию — `?.html`.
  *
  * **Пример**
  *
@@ -25,6 +25,9 @@ module.exports = require('enb/lib/build-flow').create()
     .target('destTarget', '?.html')
     .useSourceFilename('bemhtmlTarget', '?.bemhtml.js')
     .useSourceFilename('bemjsonTarget', '?.bemjson.js')
+    .optionAlias('bemhtmlTarget', 'bemhtmlFile')
+    .optionAlias('bemjsonTarget', 'bemjsonFile')
+    .optionAlias('destTarget', 'target')
     .builder(function (bemhtmlFilename, bemjsonFilename) {
         dropRequireCache(require, bemjsonFilename);
         return requireOrEval(bemjsonFilename).then(function (json) {
