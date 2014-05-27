@@ -106,9 +106,3 @@ nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson-i18n'));
 Разработка
 ----------
 Руководство на [отдельной странице](/CONTRIBUTION.md).
-
-Запуск тестов
--------------
-```
-$ npm test
-```
