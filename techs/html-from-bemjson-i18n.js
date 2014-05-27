@@ -28,16 +28,16 @@ var dropRequireCache = require('enb/lib/fs/drop-require-cache');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('html-from-bemjson-i18n')
-    .target('destTarget', '?.{lang}.html')
-    .useSourceFilename('bemhtmlTarget', '?.bemhtml.js')
-    .useSourceFilename('bemjsonTarget', '?.bemjson.js')
-    .useSourceFilename('langAllTarget', '?.lang.all.js')
-    .useSourceFilename('langTarget', '?.lang.{lang}.js')
-    .optionAlias('bemhtmlTarget', 'bemhtmlFile')
-    .optionAlias('bemjsonTarget', 'bemjsonFile')
-    .optionAlias('langAllTarget', 'langAllFile')
-    .optionAlias('langTarget', 'langFile')
-    .optionAlias('destTarget', 'target')
+    .target('target', '?.{lang}.html')
+    .useSourceFilename('bemhtmlFile', '?.bemhtml.js')
+    .useSourceFilename('bemjsonFile', '?.bemjson.js')
+    .useSourceFilename('langAllFile', '?.lang.all.js')
+    .useSourceFilename('langFile', '?.lang.{lang}.js')
+    .optionAlias('bemhtmlFile', 'bemhtmlTarget')
+    .optionAlias('bemjsonFile', 'bemjsonTarget')
+    .optionAlias('langAllFile', 'langAllTarget')
+    .optionAlias('langFile', 'langTarget')
+    .optionAlias('target', 'destTarget')
     .needRebuild(function (cache) {
         return cache.needRebuildFile('bemhtml-file', this.node.resolvePath(this._bemhtmlTarget)) ||
             cache.needRebuildFile('bemjson-file', this.node.resolvePath(this._bemjsonTarget)) ||
