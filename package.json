@@ -43,9 +43,6 @@
   },
   "scripts": {
     "test": "npm run lint && mocha test/techs",
-    "lint": "jshint . && jscs -c .jscs.js .",
-    "build": "npm run deps && cd examples/bemhtml && enb make --no-cache && cd ../bemtree && enb make --no-cache",
-    "clean": "npm run deps && cd examples/bemhtml && enb make clean && cd ../bemtree && enb make clean",
-    "deps": "cd examples && bower install"
+    "lint": "jshint . && jscs -c .jscs.js ."
   }
 }
