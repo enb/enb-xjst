@@ -28,76 +28,6 @@ var vow = require('vow');
 var vfs = require('enb/lib/fs/async-fs');
 var pinpoint = require('pinpoint');
 var BEMHTML = require('bem-bl/blocks-common/i-bem/__html/lib/bemhtml');
-
-module.exports = require('enb/lib/build-flow').create()
-    .name('bemhtml')
-    .target('target', '?.bemhtml.js')
-    .defineOption('exportName', 'BEMHTML')
-    .defineOption('applyFuncName', 'apply')
-    .defineOption('devMode', true)
-    .defineOption('cache', false)
-    .useFileList('bemhtml')
-    .builder(function (sourceFiles) {
-        var _this = this;
-        var node = this.node;
-        return vow.all(sourceFiles.map(function (file) {
-                return vfs.read(file.fullname, 'utf8')
-                    .then(function (source) {
-                        return {
-                            source: source,
-                            filename: file.fullname
-                        };
-                    });
-            }))
-            .then(function (fileSources) {
-                var bemhtmlProcessor = BemhtmlProcessor.fork();
-                var sourceMap = SourceMap(fileSources);
-                var code = sourceMap.getCode();
-
-                node.getLogger().log('Calm down, OmetaJS is running...');
-
-                return bemhtmlProcessor.process(code, _this._getOptions())
-                    .then(function (res) {
-                        var result = res.result;
-                        var error = res.error;
-
-                        bemhtmlProcessor.dispose();
-
-                        if (result) {
-                            return result;
-                        }
-
-                        if (error) {
-                            var original = sourceMap.getOriginal(error.line, error.column);
-                            var message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, '');
-                            var relPath = path.relative(node._root, original.filename);
-                            var context = pinpoint(original.source, {
-                                line: original.line,
-                                column: original.column,
-                                indent: '    '
-                            });
-
-                            if (relPath.charAt(0) !== '.') {
-                                relPath = './' + relPath;
-                            }
-
-                            throw new SyntaxError(message + ' at ' + relPath + '\n' + context);
-                        }
-                    });
-            });
-    })
-    .methods({
-        _getOptions: function () {
-            return {
-                devMode: this._devMode,
-                cache: this._cache,
-                exportName: this._exportName,
-                applyFuncName: this._applyFuncName
-            };
-        }
-    })
-    .createTech();
-
 var BemhtmlProcessor = require('sibling').declare({
     process: function (source, options) {
         try {
@@ -107,7 +37,6 @@ var BemhtmlProcessor = require('sibling').declare({
         }
     }
 });
-
 var SourceMap = function (fileSources) {
     var lastBoundary = 0;
     var boundaries = [];
@@ -160,3 +89,72 @@ var SourceMap = function (fileSources) {
         }
     };
 };
+
+module.exports = require('enb/lib/build-flow').create()
+    .name('bemhtml')
+    .target('target', '?.bemhtml.js')
+    .defineOption('exportName', 'BEMHTML')
+    .defineOption('applyFuncName', 'apply')
+    .defineOption('devMode', true)
+    .defineOption('cache', false)
+    .useFileList('bemhtml')
+    .builder(function (sourceFiles) {
+        var _this = this;
+        var node = this.node;
+        return vow.all(sourceFiles.map(function (file) {
+            return vfs.read(file.fullname, 'utf8')
+                .then(function (source) {
+                    return {
+                        source: source,
+                        filename: file.fullname
+                    };
+                });
+        }))
+            .then(function (fileSources) {
+                var bemhtmlProcessor = BemhtmlProcessor.fork();
+                var sourceMap = SourceMap(fileSources);
+                var code = sourceMap.getCode();
+
+                node.getLogger().log('Calm down, OmetaJS is running...');
+
+                return bemhtmlProcessor.process(code, _this._getOptions())
+                    .then(function (res) {
+                        var result = res.result;
+                        var error = res.error;
+
+                        bemhtmlProcessor.dispose();
+
+                        if (result) {
+                            return result;
+                        }
+
+                        if (error) {
+                            var original = sourceMap.getOriginal(error.line, error.column);
+                            var message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, '');
+                            var relPath = path.relative(node._root, original.filename);
+                            var context = pinpoint(original.source, {
+                                line: original.line,
+                                column: original.column,
+                                indent: '    '
+                            });
+
+                            if (relPath.charAt(0) !== '.') {
+                                relPath = './' + relPath;
+                            }
+
+                            throw new SyntaxError(message + ' at ' + relPath + '\n' + context);
+                        }
+                    });
+            });
+    })
+    .methods({
+        _getOptions: function () {
+            return {
+                devMode: this._devMode,
+                cache: this._cache,
+                exportName: this._exportName,
+                applyFuncName: this._applyFuncName
+            };
+        }
+    })
+    .createTech();
