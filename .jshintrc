@@ -1,15 +1,25 @@
 {
+    "curly": true,
     "eqeqeq": true,
-    "unused": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "latedef": "nofucn",
+    "noarg": true,
+    "noempty": true,
     "undef": true,
+    "unused": true,
+    "trailing": true,
+
     "node": true,
-    "globals"   : {
-        /* MOCHA */
+    "globals": {
         "describe": false,
         "it": false,
-        "before"     : false,
-        "beforeEach" : false,
-        "after"      : false,
-        "afterEach"  : false
-    }
+        "before": false,
+        "beforeEach": false,
+        "after": false,
+        "afterEach": false
+    },
+
+    "expr": true
 }
