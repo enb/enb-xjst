@@ -76,7 +76,7 @@ html-from-bemjson
 **Пример**
 
 ```javascript
-nodeConfig.addTech(require('enb-bemxjst/techs/html-from-bemjson'));
+nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
 ```
 
 html-from-bemjson-i18n
