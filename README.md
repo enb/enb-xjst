@@ -12,7 +12,7 @@ enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fu
 ```
 npm install --save-dev enb-xjst
 ```
-Для работы модуля требуется зависимость от пакета enb версии 0.13.1 или выше.
+Для работы модуля требуется зависимость от пакета enb версии 0.13.3 или выше.
 
 Технологии
 ----------
