@@ -2,7 +2,7 @@ enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fu
 ========
 
 Поддержка технологий на&nbsp;основе [`xjst`](https://github.com/bem/xjst).
-Базовые шаблоны для `bemhtml` находятся в&nbsp;[`bem-bl@v1`](https://github.com/bem/bem-bl/tree/support/1.x).
+Базовые шаблоны для `bemhtml` находятся в&nbsp;[`bem-bl`](https://github.com/bem/bem-bl).
 
 **Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [`bem-core`](https://github.com/bem/bem-core) следует использовать [`enb-bemxjst`](https://github.com/enb-make/enb-bemxjst) пакет.
 
