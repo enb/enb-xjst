@@ -27,11 +27,11 @@ var path = require('path');
 var vow = require('vow');
 var vfs = require('enb/lib/fs/async-fs');
 var pinpoint = require('pinpoint');
-var BEMHTML = require('bem-bl/blocks-common/i-bem/__html/lib/bemhtml');
+var XJST = require('bem-bl-xjst');
 var BemhtmlProcessor = require('sibling').declare({
     process: function (source, options) {
         try {
-            return { result: BEMHTML.translate(source, options) };
+            return { result: XJST.translate(source, options) };
         } catch (e) {
             return { error: e };
         }
