@@ -4,6 +4,8 @@ enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fu
 Поддержка технологий на&nbsp;основе [`xjst`](https://github.com/bem/xjst).
 Базовые шаблоны для `bemhtml` находятся в&nbsp;[`bem-bl`](https://github.com/bem/bem-bl).
 
+Используется `xjst`-транслятор из пакета [`bem-bl-xjst`](https://github.com/bem/bem-bl-xjst). Для базовых шаблонов из `bem-bl@1.x` следует использовать `bem-bl-xjst@1.x`, для `bem-bl@2.x` — `bem-bl-xjst@2.x`.
+
 **Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [`bem-core`](https://github.com/bem/bem-core) следует использовать [`enb-bemxjst`](https://github.com/enb-make/enb-bemxjst) пакет.
 
 Установка:
@@ -12,7 +14,7 @@ enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fu
 ```
 npm install --save-dev enb-xjst
 ```
-Для работы модуля требуется зависимость от пакета enb версии 0.13.3 или выше.
+Для работы модуля требуется зависимость от пакета enb версии 0.13.3 или выше, а так же bem-bl-xjst версии 1.3.2 или выше.
 
 Технологии
 ----------
