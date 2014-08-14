@@ -1,4 +1,4 @@
-enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://travis-ci.org/enb-make/enb-xjst.svg?branch=master)](https://travis-ci.org/enb-make/enb-xjst) [![Dependency Status](https://gemnasium.com/enb-make/enb-xjst.svg)](https://gemnasium.com/enb-make/enb-xjst)
+enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://travis-ci.org/enb-bem/enb-xjst.svg?branch=master)](https://travis-ci.org/enb-bem/enb-xjst) [![Dependency Status](https://gemnasium.com/enb-bem/enb-xjst.svg)](https://gemnasium.com/enb-bem/enb-xjst)
 ========
 
 Поддержка технологий на&nbsp;основе [`xjst`](https://github.com/bem/xjst).
@@ -6,7 +6,7 @@ enb-xjst [![NPM version](https://badge.fury.io/js/enb-xjst.svg)](http://badge.fu
 
 Используется `xjst`-транслятор из пакета [`bem-bl-xjst`](https://github.com/bem/bem-bl-xjst). Для базовых шаблонов из `bem-bl@1.x` следует использовать `bem-bl-xjst@1.x`, для `bem-bl@2.x` — `bem-bl-xjst@2.x`.
 
-**Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [`bem-core`](https://github.com/bem/bem-core) следует использовать [`enb-bemxjst`](https://github.com/enb-make/enb-bemxjst) пакет.
+**Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [`bem-core`](https://github.com/bem/bem-core) следует использовать [`enb-bemxjst`](https://github.com/enb-bem/enb-bemxjst) пакет.
 
 Установка:
 ----------
