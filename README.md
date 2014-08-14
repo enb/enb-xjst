@@ -23,8 +23,7 @@ npm install --save-dev enb-xjst
 * [html-from-bemjson](#html-from-bemjson)
 * [html-from-bemjson-i18n](#html-from-bemjson-i18n)
 
-bemhtml
-=======
+### bemhtml
 
 Склеивает `bemhtml`-файлы по deps'ам, обрабатывает `xjst`-транслятором, сохраняет (по умолчанию) в виде `?.bemhtml.js`.
 
@@ -44,8 +43,7 @@ bemhtml
 nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
 ```
 
-bemtree
-=======
+### bemtree
 
 Склеивает `bemtree.xjst`-файлы по deps'ам, обрабатывает `xjst`-транслятором, сохраняет (по умолчанию) в виде `?.bemtree.xjst.js`.
 
@@ -64,8 +62,7 @@ bemtree
 nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 ```
 
-html-from-bemjson
-=================
+### html-from-bemjson
 
 Собирает *html*-файл с помощью *bemjson* и *bemhtml*.
 
@@ -81,8 +78,7 @@ html-from-bemjson
 nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
 ```
 
-html-from-bemjson-i18n
-======================
+### html-from-bemjson-i18n
 
 Собирает *html*-файл с помощью *bemjson*, *bemhtml*, *lang.all* и *lang.{lang}*.
 
@@ -99,12 +95,3 @@ html-from-bemjson-i18n
 ```javascript
 nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson-i18n'));
 ```
-
-История изменений
------------------
-
-История изменений на [отдельной странице](/CHANGELOG.md).
-
-Разработка
-----------
-Руководство на [отдельной странице](/CONTRIBUTION.md).
