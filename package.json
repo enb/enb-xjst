@@ -6,10 +6,12 @@
   "repository": "git://github.com/enb-bem/enb-xjst",
   "homepage": "https://github.com/enb-bem/enb-xjst",
   "bugs": "https://github.com/enb-bem/enb-xjst/issues",
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/enb-bem/enb-xjst/blob/master/LICENSE"
-  }],
+  "licenses": [
+    {
+      "type": "MPL-2.0",
+      "url": "https://github.com/enb-bem/enb-xjst/blob/master/LICENSE.txt"
+    }
+  ],
   "contributors": [
     {
       "name": "Marat Dulin",
