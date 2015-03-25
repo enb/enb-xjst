@@ -1,14 +1,14 @@
 enb-xjst
 ========
 
-[![NPM version](http://img.shields.io/npm/v/enb-xjst.svg?style=flat)](http://badge.fury.io/js/enb-xjst) [![Build Status](http://img.shields.io/travis/enb-bem/enb-xjst/master.svg?style=flat)](https://travis-ci.org/enb-bem/enb-xjst) [![Dependency Status](http://img.shields.io/david/enb-bem/enb-xjst.svg?style=flat)](https://david-dm.org/enb-bem/enb-xjst)
+[![NPM version](https://img.shields.io/npm/v/enb-xjst.svg?style=flat)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://img.shields.io/travis/enb-bem/enb-xjst/master.svg?style=flat)](https://travis-ci.org/enb-bem/enb-xjst) [![Dependency Status](https://img.shields.io/david/enb-bem/enb-xjst.svg?style=flat)](https://david-dm.org/enb-bem/enb-xjst)
 
-Поддержка технологий на&nbsp;основе [XJST](http://bem.info/tools/templating-engines/xjst/).
-Базовые шаблоны для BEMHTML находятся в&nbsp;[bem-bl](http://ru.bem.info/libs/bem-bl/current/).
+Поддержка технологий на&nbsp;основе [XJST](https://bem.info/tools/templating-engines/xjst/).
+Базовые шаблоны для BEMHTML находятся в&nbsp;[bem-bl](https://ru.bem.info/libs/bem-bl/current/).
 
 Используется XJST-транслятор из пакета [bem-bl-xjst](https://github.com/bem/bem-bl-xjst). Для базовых шаблонов из `bem-bl@1.x` следует использовать `bem-bl-xjst@1.x`, для `bem-bl@2.x` — `bem-bl-xjst@2.x`.
 
-**Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [bem-core](http://ru.bem.info/libs/bem-core/current/), следует использовать [enb-bemxjst](https://github.com/enb-bem/enb-bemxjst) пакет.
+**Внимание**: для технологий, базовые шаблоны которых находятся в&nbsp;библиотеке [bem-core](https://ru.bem.info/libs/bem-core/current/), следует использовать [enb-bemxjst](https://github.com/enb-bem/enb-bemxjst) пакет.
 
 Установка
 ----------
