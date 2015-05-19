@@ -23,26 +23,28 @@
  * ```
  */
 
-var path = require('path');
-var vow = require('vow');
-var vfs = require('enb/lib/fs/async-fs');
-var pinpoint = require('pinpoint');
-var XJST = require('bem-bl-xjst');
-var BemhtmlProcessor = require('sibling').declare({
-    process: function (source, options) {
-        try {
-            return { result: XJST.translate(source, options) };
-        } catch (e) {
-            return { error: e };
+var path = require('path'),
+    vow = require('vow'),
+    vfs = require('enb/lib/fs/async-fs'),
+    pinpoint = require('pinpoint'),
+    XJST = require('bem-bl-xjst'),
+    BemhtmlProcessor = require('sibling').declare({
+        process: function (source, options) {
+            try {
+                return { result: XJST.translate(source, options) };
+            } catch (e) {
+                return { error: e };
+            }
         }
-    }
-});
-var SourceMap = function (fileSources) {
-    var lastBoundary = 0;
-    var boundaries = [];
-    var filenames = [];
-    var sources = [];
-    var code = '';
+    }),
+    SourceMap;
+
+SourceMap = function (fileSources) {
+    var lastBoundary = 0,
+        boundaries = [],
+        filenames = [],
+        sources = [],
+        code = '';
 
     fileSources.forEach(function (fileSource) {
         var source = fileSource.source;
@@ -72,8 +74,8 @@ var SourceMap = function (fileSources) {
 
     return {
         getOriginal: function (line, column) {
-            var rangeIndex = _getRangeIndexByLineNumber(line);
-            var lowerBoundary = boundaries[rangeIndex - 1] || 0;
+            var rangeIndex = _getRangeIndexByLineNumber(line),
+                lowerBoundary = boundaries[rangeIndex - 1] || 0;
 
             if (rangeIndex !== -1) {
                 return {
@@ -99,8 +101,8 @@ module.exports = require('enb/lib/build-flow').create()
     .defineOption('cache', false)
     .useFileList('bemhtml')
     .builder(function (sourceFiles) {
-        var _this = this;
-        var node = this.node;
+        var _this = this,
+            node = this.node;
         return vow.all(sourceFiles.map(function (file) {
             return vfs.read(file.fullname, 'utf8')
                 .then(function (source) {
@@ -111,16 +113,16 @@ module.exports = require('enb/lib/build-flow').create()
                 });
         }))
             .then(function (fileSources) {
-                var bemhtmlProcessor = BemhtmlProcessor.fork();
-                var sourceMap = SourceMap(fileSources);
-                var code = sourceMap.getCode();
+                var bemhtmlProcessor = BemhtmlProcessor.fork(),
+                    sourceMap = SourceMap(fileSources),
+                    code = sourceMap.getCode();
 
                 node.getLogger().log('Calm down, OmetaJS is running...');
 
                 return bemhtmlProcessor.process(code, _this._getOptions())
                     .then(function (res) {
-                        var result = res.result;
-                        var error = res.error;
+                        var result = res.result,
+                            error = res.error;
 
                         bemhtmlProcessor.dispose();
 
@@ -129,14 +131,14 @@ module.exports = require('enb/lib/build-flow').create()
                         }
 
                         if (error) {
-                            var original = sourceMap.getOriginal(error.line, error.column);
-                            var message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, '');
-                            var relPath = path.relative(node._root, original.filename);
-                            var context = pinpoint(original.source, {
-                                line: original.line,
-                                column: original.column,
-                                indent: '    '
-                            });
+                            var original = sourceMap.getOriginal(error.line, error.column),
+                                message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, ''),
+                                relPath = path.relative(node._root, original.filename),
+                                context = pinpoint(original.source, {
+                                    line: original.line,
+                                    column: original.column,
+                                    indent: '    '
+                                });
 
                             if (relPath.charAt(0) !== '.') {
                                 relPath = './' + relPath;

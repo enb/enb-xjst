@@ -16,9 +16,9 @@
  * nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
  * ```
  */
-var requireOrEval = require('enb/lib/fs/require-or-eval');
-var asyncRequire = require('enb/lib/fs/async-require');
-var dropRequireCache = require('enb/lib/fs/drop-require-cache');
+var requireOrEval = require('enb/lib/fs/require-or-eval'),
+    asyncRequire = require('enb/lib/fs/async-require'),
+    dropRequireCache = require('enb/lib/fs/drop-require-cache');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('html-from-bemjson')
