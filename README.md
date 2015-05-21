@@ -1,7 +1,8 @@
 enb-xjst
 ========
 
-[![NPM version](https://img.shields.io/npm/v/enb-xjst.svg?style=flat)](http://badge.fury.io/js/enb-xjst) [![Build Status](https://img.shields.io/travis/enb-bem/enb-xjst/master.svg?style=flat)](https://travis-ci.org/enb-bem/enb-xjst) [![Dependency Status](https://img.shields.io/david/enb-bem/enb-xjst.svg?style=flat)](https://david-dm.org/enb-bem/enb-xjst)
+[![NPM version](https://img.shields.io/npm/v/enb-xjst.svg?style=flat)](https://www.npmjs.org/package/enb-xjst) [![Build Status](https://img.shields.io/travis/enb-bem/enb-xjst/master.svg?style=flat&label=tests)](https://travis-ci.org/enb-bem/enb-xjst) [![Build status](https://img.shields.io/appveyor/ci/blond/enb-xjst.svg?style=flat&label=windows)](https://ci.appveyor.com/project/blond/enb-xjst) [![Coverage Status](https://img.shields.io/coveralls/enb-bem/enb-xjst.svg?style=flat)](https://coveralls.io/r/enb-bem/enb-xjst?branch=master) [![Dependency Status](https://img.shields.io/david/enb-bem/enb-xjst.svg?style=flat)](https://david-dm.org/enb-bem/enb-xjst)
+
 
 Поддержка технологий на&nbsp;основе [XJST](https://bem.info/tools/templating-engines/xjst/).
 Базовые шаблоны для BEMHTML находятся в&nbsp;[bem-bl](https://ru.bem.info/libs/bem-bl/current/).
