@@ -1,3 +1,3 @@
 var mock = require('mock-require');
 
-mock('sibling', require('./mock-sibling'));
+mock(require.resolve('sibling'), require('./mock-sibling'));
