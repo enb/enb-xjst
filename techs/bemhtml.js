@@ -104,14 +104,14 @@ module.exports = require('enb/lib/build-flow').create()
         var _this = this,
             node = this.node;
         return vow.all(sourceFiles.map(function (file) {
-            return vfs.read(file.fullname, 'utf8')
-                .then(function (source) {
-                    return {
-                        source: source,
-                        filename: file.fullname
-                    };
-                });
-        }))
+                return vfs.read(file.fullname, 'utf8')
+                    .then(function (source) {
+                        return {
+                            source: source,
+                            filename: file.fullname
+                        };
+                    });
+            }))
             .then(function (fileSources) {
                 var bemhtmlProcessor = BemhtmlProcessor.fork(),
                     sourceMap = SourceMap(fileSources),

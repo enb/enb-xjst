@@ -1,8 +1,8 @@
 {
-  "author" : "Marat Dulin <mdevils@yandex.ru>",
-  "description" : "xjst support for ENB",
-  "name" : "enb-xjst",
-  "version" : "1.2.0",
+  "author": "Marat Dulin <mdevils@yandex.ru>",
+  "description": "xjst support for ENB",
+  "name": "enb-xjst",
+  "version": "1.2.0",
   "repository": "git://github.com/enb-bem/enb-xjst",
   "homepage": "https://github.com/enb-bem/enb-xjst",
   "bugs": "https://github.com/enb-bem/enb-xjst/issues",
@@ -29,24 +29,25 @@
     "enb": ">= 0.13.0 < 1.0.0",
     "bem-bl-xjst": ">= 1.3.2"
   },
-  "dependencies" : {
+  "dependencies": {
     "sibling": "0.1.3",
     "vow": "0.4.9",
     "pinpoint": "1.1.0"
   },
-  "devDependencies" : {
-    "enb": ">= 0.13.0 < 1.0.0",
+  "devDependencies": {
     "bem-bl-xjst": "2.1.4",
-    "mocha": "2.2.5",
-    "mock-fs": "2.7.0",
-    "must": "0.12.0",
-    "jshint": "2.7.0",
-    "jscs": "1.13.1",
-    "istanbul": "0.3.14",
     "chai": "2.3.0",
-    "mocha-phantomjs": "3.5.3",
-    "phantomjs": "1.9.16",
+    "enb": ">= 0.13.0 < 1.0.0",
     "finalhandler": "0.3.6",
+    "istanbul": "0.3.14",
+    "jscs": "1.13.1",
+    "jshint": "2.7.0",
+    "mocha": "2.2.5",
+    "mocha-phantomjs": "3.5.3",
+    "mock-fs": "2.7.0",
+    "mock-require": "1.0.5",
+    "must": "0.12.0",
+    "phantomjs": "1.9.16",
     "serve-static": "1.9.3",
     "vow-node": "0.3.0"
   },

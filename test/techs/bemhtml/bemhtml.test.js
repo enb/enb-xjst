@@ -57,10 +57,10 @@ describe('bemhtml', function () {
 
             return vow.all([
                 bundle.runTechAndGetContent(
-                    Tech, { devMode: true }
+                    Tech, { target: 'dev.bemhtml.js', devMode: true }
                 ),
                 bundle.runTechAndGetContent(
-                    Tech, { devMode: false }
+                    Tech, { target: 'prod.bemhtml.js', devMode: false }
                 )
             ]).spread(function (dev, prod) {
                 var devSource = dev.toString(),
