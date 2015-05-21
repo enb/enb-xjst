@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    path = require('path'),
     vow = require('vow'),
     mock = require('mock-fs'),
     TestNode = require('enb/lib/test/mocks/test-node'),
@@ -17,6 +18,61 @@ describe('bemhtml', function () {
             html = '<a class="bla"></a>';
 
         return assert(bemjson, html, templates);
+    });
+
+    describe('syntax error', function () {
+        it('must throw if syntax error at end line', function () {
+            var templates = ['block throw tag: "a"'];
+
+            return build(templates)
+                .fail(function (err) {
+                    err.must.a(SyntaxError);
+                    err.message.must.equal([
+                        'space rule failed at ./blocks' + path.sep + 'block-0.bemhtml',
+                        '    1| block throw tag: "a"',
+                        '    ---------------^'
+                    ].join('\n'));
+                });
+        });
+
+        it('must throw if syntax error at midst line', function () {
+            var templates = [
+                [
+                    'block bla, content: "bla!bla!"',
+                    'block throw tag: "a"',
+                    'block bla, tag: "p"'
+                ].join('\n')
+            ];
+
+            return build(templates)
+                .fail(function (err) {
+                    err.must.a(SyntaxError);
+                    err.message.must.equal([
+                        'space rule failed at ./blocks' + path.sep + 'block-0.bemhtml',
+                        '    1| block bla, content: "bla!bla!"',
+                        '    2| block throw tag: "a"',
+                        '    ---------------^',
+                        '    3| block bla, tag: "p"'
+                    ].join('\n'));
+                });
+        });
+
+        it('must throw if syntax error in some template', function () {
+            var templates = [
+                'block bla, content: "bla!bla!"',
+                'block throw tag: "a"'
+            ];
+
+            return build(templates)
+                .fail(function (err) {
+                    err.must.a(SyntaxError);
+                    err.message.must.equal([
+                        'space rule failed at ./blocks' + path.sep + 'block-1.bemhtml',
+                        '    1| block throw tag: "a"',
+                        '    ---------------^'
+                    ].join('\n'));
+                });
+        });
     });
 
     describe('mode', function () {
@@ -95,7 +151,7 @@ describe('bemhtml', function () {
     });
 });
 
-function assert(bemjson, html, templates, options) {
+function build(templates, options) {
     var scheme = {
             blocks: {
                 'base.bemhtml': fs.readFileSync(bemhtmlCoreFilename, 'utf-8')
@@ -117,6 +173,13 @@ function assert(bemjson, html, templates, options) {
 
     return bundle.runTechAndRequire(Tech, options)
         .spread(function (bemhtml) {
-            bemhtml.BEMHTML.apply(bemjson).must.be(html);
+            return bemhtml.BEMHTML;
+        });
+}
+
+function assert(bemjson, html, templates, options) {
+    return build(templates, options)
+        .then(function (BEMHTML) {
+            BEMHTML.apply(bemjson).must.be(html);
         });
 }
