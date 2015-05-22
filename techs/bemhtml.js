@@ -59,12 +59,12 @@ SourceMap = function (fileSources) {
     });
 
     function _getRangeIndexByLineNumber(lineNumber) {
-        if (lineNumber > lastBoundary) {
+        if (lineNumber > lastBoundary + 1) {
             return -1;
         }
 
         for (var i = 0; i < boundaries.length; ++i) {
-            if (lineNumber <= boundaries[i]) {
+            if (lineNumber <= boundaries[i] + 1) {
                 return i;
             }
         }
@@ -131,20 +131,33 @@ module.exports = require('enb/lib/build-flow').create()
                         }
 
                         if (error) {
-                            var original = sourceMap.getOriginal(error.line, error.column),
-                                message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, ''),
-                                relPath = path.relative(node._root, original.filename),
-                                context = pinpoint(original.source, {
-                                    line: original.line,
-                                    column: original.column,
-                                    indent: '    '
-                                });
+                            var line = error.line,
+                                column = error.column;
 
-                            if (relPath.charAt(0) !== '.') {
-                                relPath = './' + relPath;
+                            // Syntax Error
+                            if (line && column) {
+                                var original = sourceMap.getOriginal(line, column);
+
+                                if (original) {
+                                    var message = error.message.split('\n')[0].replace(/\sat\:\s(\d)+\:(\d)+/, ''),
+                                        relPath = path.relative(node._root, original.filename),
+                                        context = pinpoint(original.source, {
+                                            line: original.line,
+                                            column: original.column,
+                                            indent: '    '
+                                        });
+
+                                    if (relPath.charAt(0) !== '.') {
+                                        relPath = './' + relPath;
+                                    }
+
+                                    throw new SyntaxError(message + ' at ' + relPath + '\n' + context);
+                                } else {
+                                    throw error;
+                                }
+                            } else {
+                                throw error;
                             }
-
-                            throw new SyntaxError(message + ' at ' + relPath + '\n' + context);
                         }
                     });
             });
