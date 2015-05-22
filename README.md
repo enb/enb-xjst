@@ -24,7 +24,6 @@ npm install --save-dev enb-xjst
 * [bemhtml](#bemhtml)
 * [bemtree](#bemtree)
 * [html-from-bemjson](#html-from-bemjson)
-* [html-from-bemjson-i18n](#html-from-bemjson-i18n)
 
 ### bemhtml
 
@@ -79,24 +78,6 @@ nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 
 ```javascript
 nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
-```
-
-### html-from-bemjson-i18n
-
-Собирает HTML-файл с помощью BEMJSON, BEMHTML, `lang.all` и `lang.{lang}`.
-
-**Опции**
-
-* *String* **bemhtmlFile** — исходный BEMHTML-файл. По умолчанию — `?.bemhtml.js`.
-* *String* **bemjsonFile** — исходный BEMJSON-файл. По умолчанию — `?.bemjson.js`.
-* *String* **langAllFile** — исходный `langAll`-файл. По умолчанию — `?.lang.all.js`.
-* *String* **langFile** — исходный `lang`-файл. По умолчанию — `?.lang.{lang}.js`. Если параметр `lang` не указан, берется первый из объявленных в проекте языков.
-* *String* **target** — результирующий HTML-файл. По умолчанию — `?.{lang}.html`.
-
-**Пример**
-
-```javascript
-nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson-i18n'));
 ```
 
 Лицензия
