@@ -43,6 +43,7 @@
     "jscs": "1.13.1",
     "jshint": "2.7.0",
     "mocha": "2.2.5",
+    "mock-enb": "0.0.1",
     "mocha-phantomjs": "3.5.3",
     "mock-fs": "2.7.0",
     "mock-require": "1.0.5",

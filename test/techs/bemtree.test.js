@@ -4,7 +4,7 @@ var fs = require('fs'),
     vm = require('vm'),
     assert = require('assert'),
     mock = require('mock-fs'),
-    TestNode = require('enb/lib/test/mocks/test-node'),
+    MockNode = require('mock-enb/lib/mock-node'),
     Tech = require('../../techs/bemtree'),
     FileList = require('enb/lib/file-list'),
     fixturesPath = path.join(__dirname, '..', 'fixtures', 'bemtree'),
@@ -53,7 +53,7 @@ function runTest(options) {
 
     mock(scheme);
 
-    bundle = new TestNode('bundle');
+    bundle = new MockNode('bundle');
     fileList = new FileList();
     fileList.loadFromDirSync('blocks');
     bundle.provideTechData('?.files', fileList);
