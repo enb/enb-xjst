@@ -1,5 +1,5 @@
 var mock = require('mock-fs'),
-    TestNode = require('enb/lib/test/mocks/test-node'),
+    MockNode = require('mock-enb/lib/mock-node'),
     Tech = require('../../techs/html-from-bemjson-i18n'),
     writeFile = require('../lib/write-file');
 
@@ -38,7 +38,7 @@ describe('html-from-bemjson-i18n', function () {
 
         mock(scheme);
 
-        bundle = new TestNode('bundle');
+        bundle = new MockNode('bundle');
 
         return bundle.runTechAndGetContent(
             Tech, { lang: 'ru' }
@@ -65,7 +65,7 @@ describe('html-from-bemjson-i18n', function () {
 
             mock(scheme);
 
-            bundle = new TestNode('bundle');
+            bundle = new MockNode('bundle');
 
             return bundle.runTech(
                     Tech, { lang: 'ru' }
@@ -96,7 +96,7 @@ describe('html-from-bemjson-i18n', function () {
 
             mock(scheme);
 
-            bundle = new TestNode('bundle');
+            bundle = new MockNode('bundle');
 
             return bundle.runTech(
                     Tech, { lang: 'ru' }
