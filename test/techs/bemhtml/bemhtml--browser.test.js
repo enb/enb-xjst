@@ -51,8 +51,8 @@ function runTest(options) {
     fileList.loadFromDirSync('blocks');
     bundle.provideTechData('?.files', fileList);
 
-    return bundle.runTechAndGetContent(Tech, options)
-        .spread(function () {
+    return bundle.runTech(Tech, options)
+        .then(function () {
             return runServer(3000);
         });
 }
