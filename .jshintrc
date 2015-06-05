@@ -1,25 +1,19 @@
 {
-    "curly": true,
+    "bitwise": true,
     "eqeqeq": true,
     "forin": true,
     "freeze": true,
     "immed": true,
-    "latedef": "nofucn",
+    "latedef": "nofunc",
     "noarg": true,
     "noempty": true,
+    "nonbsp": true,
+    "nonew": true,
     "undef": true,
     "unused": true,
-    "trailing": true,
 
     "node": true,
-    "globals": {
-        "describe": false,
-        "it": false,
-        "before": false,
-        "beforeEach": false,
-        "after": false,
-        "afterEach": false
-    },
 
-    "expr": true
+    "expr": true,
+    "sub": true
 }
