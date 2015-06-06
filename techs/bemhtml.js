@@ -63,13 +63,15 @@ SourceMap = function (fileSources) {
             return -1;
         }
 
+        if (lineNumber < 0) {
+            return -1;
+        }
+
         for (var i = 0; i < boundaries.length; ++i) {
             if (lineNumber <= boundaries[i] + 1) {
                 return i;
             }
         }
-
-        return -1;
     }
 
     return {
