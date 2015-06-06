@@ -2,12 +2,21 @@ var fs = require('fs'),
     path = require('path'),
     vow = require('vow'),
     mock = require('mock-fs'),
+    mockRequire = require('mock-require'),
     MockNode = require('mock-enb/lib/mock-node'),
-    Tech = require('../../../techs/bemhtml'),
+    techPath = '../../../techs/bemhtml',
+    xjstPath = require.resolve('bem-bl-xjst'),
+    Tech = require(techPath),
     FileList = require('enb/lib/file-list'),
+    dropRequireCache = require('enb/lib/fs/drop-require-cache'),
     bemhtmlCoreFilename = require.resolve('bem-bl-xjst/i-bem__html.bemhtml');
 
 describe('bemhtml', function () {
+    beforeEach(function () {
+        dropRequireCache(require, techPath);
+        Tech = require(techPath);
+    });
+
     afterEach(function () {
         mock.restore();
     });
@@ -18,6 +27,77 @@ describe('bemhtml', function () {
             html = '<a class="bla"></a>';
 
         return assert(bemjson, html, templates);
+    });
+
+    describe('xjst error', function () {
+        afterEach(function () {
+            mockRequire.stop(xjstPath);
+        });
+
+        function mockXJST(xjst) {
+            mockRequire(xjstPath, xjst);
+
+            dropRequireCache(require, techPath);
+            Tech = require(techPath);
+        }
+
+        it('must throw xjst error', function () {
+            var mockXjst = {
+                translate: function () {
+                    throw new Error('message');
+                }
+            };
+
+            mockXJST(mockXjst);
+
+            return build([''])
+                .fail(function (err) {
+                    err.must.a(Error);
+                    err.message.must.equal('message');
+                });
+        });
+
+        it('must throw error if syntax pointer left the code', function () {
+            var mockXjst = {
+                translate: function () {
+                    var err = new Error('message');
+
+                    err.line = 100500;
+                    err.column = 100500;
+
+                    throw err;
+                }
+            };
+
+            mockXJST(mockXjst);
+
+            return build([''])
+                .fail(function (err) {
+                    err.must.a(Error);
+                    err.message.must.equal('message');
+                });
+        });
+
+        it('must throw error if line and column are wrong', function () {
+            var mockXjst = {
+                translate: function () {
+                    var err = new Error('message');
+
+                    err.line = -1;
+                    err.column = -1;
+
+                    throw err;
+                }
+            };
+
+            mockXJST(mockXjst);
+
+            return build([''])
+                .fail(function (err) {
+                    err.must.a(Error);
+                    err.message.must.equal('message');
+                });
+        });
     });
 
     describe('syntax error', function () {
