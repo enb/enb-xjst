@@ -21,9 +21,12 @@
  * nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
  * ```
  */
-module.exports = require('./bemhtml').buildFlow()
+module.exports = require('./xjst').buildFlow()
     .name('bemtree')
     .target('target', '?.bemtree.xjst.js')
     .defineOption('exportName', 'BEMTREE')
+    .defineOption('applyFuncName', 'apply')
+    .defineOption('devMode', true)
+    .defineOption('cache', false)
     .useFileList('bemtree.xjst')
     .createTech();
