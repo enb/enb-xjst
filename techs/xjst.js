@@ -2,8 +2,6 @@ var path = require('path'),
     vow = require('vow'),
     vfs = require('enb/lib/fs/async-fs'),
     pinpoint = require('pinpoint'),
-    sibling = require('sibling'),
-    XJST = require('bem-bl-xjst'),
     SourceMap = require('../lib/source-map');
 
 module.exports = require('enb/lib/build-flow').create()
@@ -46,24 +44,12 @@ module.exports = require('enb/lib/build-flow').create()
          * @private
          */
         _xjstProcess: function (code, sourceMap) {
-            var xjstProcessor = this._getXJSTProcessor().fork();
+            var jobQueue = this.node.getSharedResources().jobQueue;
 
             this.node.getLogger().log('Calm down, OmetaJS is running...');
-
-            return xjstProcessor.process(code, this._getOptions())
-                .then(function (res) {
-                    var result = res.result,
-                        error = res.error;
-
-                    xjstProcessor.dispose();
-
-                    if (result) {
-                        return result;
-                    }
-
-                    if (error) {
-                        throw this._generateError(error, sourceMap);
-                    }
+            return jobQueue.push(path.resolve(__dirname, '../lib/xjst-processor'), code, this._getOptions())
+                .fail(function (error) {
+                    throw this._generateError(error, sourceMap);
                 }, this);
         },
 
@@ -118,24 +104,6 @@ module.exports = require('enb/lib/build-flow').create()
                 exportName: this._exportName,
                 applyFuncName: this._applyFuncName
             };
-        },
-
-        /**
-         * Returns xjst processor declaration
-         *
-         * @returns {*}
-         * @protected
-         */
-        _getXJSTProcessor: function () {
-            return sibling.declare({
-                process: function (source, options) {
-                    try {
-                        return { result: XJST.translate(source, options) };
-                    } catch (e) {
-                        return { error: e };
-                    }
-                }
-            });
         }
     })
     .createTech();
