@@ -1,3 +1,1 @@
-var mock = require('mock-require');
-
-mock(require.resolve('sibling'), require('./mock-sibling'));
+require('./job-queue-stub');
