@@ -23,7 +23,7 @@ npm install --save-dev enb-xjst
 ----------
 * [bemhtml](#bemhtml)
 * [bemtree](#bemtree)
-* [html-from-bemjson](#html-from-bemjson)
+* [bemjson-to-html](#bemjson-to-html)
 
 ### bemhtml
 
@@ -64,7 +64,7 @@ nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
 nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 ```
 
-### html-from-bemjson
+### bemjson-to-html
 
 Собирает HTML-файл с помощью BEMJSON и BEMHTML.
 
@@ -77,7 +77,7 @@ nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
 **Пример**
 
 ```javascript
-nodeConfig.addTech(require('enb-xjst/techs/html-from-bemjson'));
+nodeConfig.addTech(require('enb-xjst/techs/bemjson-to-html'));
 ```
 
 Лицензия
