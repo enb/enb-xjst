@@ -1,8 +1,10 @@
-var path = require('path'),
+var EOL = require('os').EOL,
+    path = require('path'),
     vow = require('vow'),
     vfs = require('enb/lib/fs/async-fs'),
     pinpoint = require('pinpoint'),
-    SourceMap = require('../lib/source-map');
+    SourceMap = require('../lib/source-map'),
+    bundle = require('../lib/bundle');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('xjst')
@@ -44,10 +46,28 @@ module.exports = require('enb/lib/build-flow').create()
          * @private
          */
         _xjstProcess: function (code, sourceMap) {
-            var jobQueue = this.node.getSharedResources().jobQueue;
+            var jobQueue = this.node.getSharedResources().jobQueue,
+                template = [
+                    'this._mode === "", !this.require: applyNext(this.require = function (lib) {',
+                    '    return __xjst_libs__[lib];',
+                    '})'
+                ].join(EOL);
+
+            code += EOL + template;
 
             this.node.getLogger().log('Calm down, OmetaJS is running...');
-            return jobQueue.push(path.resolve(__dirname, '../lib/xjst-processor'), code, this._getOptions())
+            return jobQueue.push(
+                    path.resolve(__dirname, '../lib/xjst-processor'),
+                    code,
+                    this._getOptions()
+                )
+                .then(function (result) {
+                    return bundle.compile(result, {
+                        exportName: this._exportName,
+                        includeVow: this._includeVow,
+                        requires: this._requires
+                    });
+                }, this)
                 .fail(function (error) {
                     throw this._generateError(error, sourceMap);
                 }, this);
