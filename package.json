@@ -25,16 +25,15 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "peerDependencies": {
-    "enb": ">= 0.16.0 < 1.0.0",
-    "bem-bl-xjst": ">= 1.3.2"
-  },
   "dependencies": {
-    "vow": "0.4.9",
-    "pinpoint": "1.1.0"
+    "bem-bl-xjst": "2.1.4",
+    "pinpoint": "1.1.0",
+    "vow": "0.4.9"
+  },
+  "peerDependencies": {
+    "enb": ">= 0.16.0 < 1.0.0"
   },
   "devDependencies": {
-    "bem-bl-xjst": "2.1.4",
     "chai": "2.3.0",
     "enb": ">= 0.16.0 < 1.0.0",
     "finalhandler": "0.3.6",
