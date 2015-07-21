@@ -15,7 +15,8 @@
  * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMHTML. По умолчанию — `'apply'`.
  * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
  * * *Boolean* **cache** — Кеширование. По умолчанию — `false`.
- *
+ * * *Object* **requires** - Объект с объявлением зависимостей для различных модульных систем.
+ *    По умолчанию - пустой объект.
  * **Пример**
  *
  * ```javascript
@@ -30,5 +31,6 @@ module.exports = require('./xjst').buildFlow()
     .defineOption('applyFuncName', 'apply')
     .defineOption('devMode', true)
     .defineOption('cache', false)
+    .defineOption('requires', {})
     .useFileList('bemhtml')
     .createTech();

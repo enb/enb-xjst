@@ -14,7 +14,7 @@
  * * *String* **exportName** — Имя переменной-обработчика BEMTREE. По умолчанию — `'BEMTREE'`.
  * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMTREE. По умолчанию — `'apply'`.
  * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
- *
+ * * *Boolean* **includeVow** - флаг позволяющий подклчать код `vow` в шаблон. По умолчанию `true`.
  * **Пример**
  *
  * ```javascript
@@ -28,5 +28,6 @@ module.exports = require('./xjst').buildFlow()
     .defineOption('applyFuncName', 'apply')
     .defineOption('devMode', true)
     .defineOption('cache', false)
+    .defineOption('includeVow', true)
     .useFileList('bemtree.xjst')
     .createTech();

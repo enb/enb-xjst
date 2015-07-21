@@ -38,6 +38,7 @@ npm install --save-dev enb-xjst
 * *String* **applyFuncName** — имя `apply`-функции базового шаблона BEMHTML. По умолчанию — `'apply'`.
 * *Boolean* **devMode** — development-режим.  По умолчанию `true`.
 * *Boolean* **cache** — кеширование. По умолчанию — `false`.
+* *Object* **requires** — Объект с объявлением зависимостей для различных модульных систем. По умолчанию — пустой объект.
 
 **Пример**
 
@@ -57,6 +58,7 @@ nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
 * *String* **exportName** — имя переменной-обработчика BEMTREE. По умолчанию — `'BEMTREE'`.
 * *String* **applyFuncName** — имя `apply`-функции базового шаблона BEMTREE. По умолчанию — `'apply'`.
 * *Boolean* **devMode** — development-режим. По умолчанию `true`.
+* *Boolean* **includeVow** - флаг, позволяющий подключать код `vow` в шаблон. По умолчанию `true`.
 
 **Пример**
 
