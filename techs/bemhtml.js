@@ -1,29 +1,43 @@
 /**
- * bemhtml
- * =======
+ * @class BemhtmlTech
+ * @augments {XjstTech}
+ * @classdesc
  *
- * Склеивает *bemhtml*-файлы по deps'ам, обрабатывает `xjst`-транслятором,
- * сохраняет (по умолчанию) в виде `?.bemhtml.js`.
+ * Compiles BEMHTML template files with XJST translator and merges them into a single BEMHTML bundle.<br/><br/>
  *
- * **Опции**
+ * @param {Object}    [options]                          Options.
+ * @param {String}    [options.target='?.bemhtml.js']    Path to target with compiled file.
+ * @param {String}    [options.filesTarget='?.files']    Path to target with FileList.
+ * @param {String}    [options.exportName='BEMHTML']     Name of BEMHTML template variable.
+ * @param {String}    [options.applyFuncName='apply']    Alias  for `apply` function of base BEMHTML template.
+ * @param {Boolean}   [options.devMode=true]             Set `devMode` option for convenient debugging. If `devMode` is
+ * set to true, code of templates will not be compiled but only wrapped for development purposes.
+ * @param {Boolean}   [options.cache=false]              Set `cache` option for cache usage.
+ * @param {Object}    [options.requires]                 Names of dependencies which should be available from
+ * code of templates.
+ * @param {String[]}  [options.sourceSuffixes]           Files with specified suffixes involved in the assembly.
  *
- * * *String* **target** — Результирующий таргет. По умолчанию — `?.bemhtml.js`.
- * * *String* **filesTarget** — files-таргет, на основе которого получается список исходных файлов
- *   (его предоставляет технология `files`). По умолчанию — `?.files`.
- * * *String* **sourceSuffixes** — суффиксы файлов, по которым строится `files`-таргет. По умолчанию — `bemtree.xjst`.
- * * *String* **exportName** — Имя переменной-обработчика BEMHTML. По умолчанию — `'BEMHTML'`.
- * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMHTML. По умолчанию — `'apply'`.
- * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
- * * *Boolean* **cache** — Кеширование. По умолчанию — `false`.
- * * *Object* **requires** - Объект с объявлением зависимостей для различных модульных систем.
- *    По умолчанию - пустой объект.
- * **Пример**
+ * @example
+ * var BemhtmlTech = require('enb-xjst/techs/bemhtml'),
+ *     FileProvideTech = require('enb/techs/file-provider'),
+ *     bem = require('enb-bem-techs');
  *
- * ```javascript
- * nodeConfig.addTech(require('enb-xjst/techs/bemhtml'));
- * ```
+ * module.exports = function(config) {
+ *     config.node('bundle', function(node) {
+ *         // get FileList
+ *         node.addTechs([
+ *             [FileProvideTech, { target: '?.bemdecl.js' }],
+ *             [bem.levels, levels: ['blocks']],
+ *             bem.deps,
+ *             bem.files
+ *         ]);
+ *
+ *         // build BEMHTML file
+ *         node.addTech(BemhtmlTech);
+ *         node.addTarget('?.bemhtml.js');
+ *     });
+ * };
  */
-
 module.exports = require('./xjst').buildFlow()
     .name('bemhtml')
     .target('target', '?.bemhtml.js')
