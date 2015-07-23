@@ -6,6 +6,18 @@ var EOL = require('os').EOL,
     SourceMap = require('../lib/source-map'),
     bundle = require('../lib/bundle');
 
+/**
+ * @class XjstTech
+ * @augments {BaseTech}
+ * @classdesc
+ *
+ * Compiles XJST template files with XJST translator and merges them into a single template bundle.<br/><br/>
+ *
+ * Important: Normally you don't need to use this tech directly.
+ *
+ * @param {Object}      [options]                       Options
+ * @param {String}      [options.target='?.xjst.js']    Path to target with compiled file.
+ */
 module.exports = require('enb/lib/build-flow').create()
     .name('xjst')
     .target('target', '?.xjst.js')
@@ -21,8 +33,7 @@ module.exports = require('enb/lib/build-flow').create()
     .methods({
         /**
          * Reads source files from local filesystem
-         *
-         * @param {FileList} sourceFiles - array of source file names
+         * @param {Object[]} sourceFiles — objects that contain file information.
          * @returns {Promise}
          * @protected
          */
@@ -39,10 +50,10 @@ module.exports = require('enb/lib/build-flow').create()
         },
 
         /**
-         * Merges content of source files and runs xjst processing for merged code
-         * @param {String} code for processing
-         * @param {SourceMap} sourceMap
-         * @returns {*}
+         * Merges content of source files and runs XJST processing for merged code.
+         * @param {String} code for processing.
+         * @param {SourceMap} object with sourceMap model.
+         * @returns {Promise}
          * @private
          */
         _xjstProcess: function (code, sourceMap) {
@@ -74,9 +85,8 @@ module.exports = require('enb/lib/build-flow').create()
         },
 
         /**
-         * Error handler function.
-         *
-         * @param {Error} error which occurs while xjstProcessing
+         * Error handler function
+         * @param {Error} error which occurs while XJST processing
          * @param {SourceMap} sourceMap model object
          * @returns {SyntaxError|*}
          * @protected
@@ -112,8 +122,7 @@ module.exports = require('enb/lib/build-flow').create()
         },
 
         /**
-         * Returns configuration object for xjstProcessor
-         *
+         * Returns configuration object for XJST processor
          * @returns {Object}
          * @protected
          */

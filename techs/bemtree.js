@@ -1,25 +1,41 @@
 /**
- * bemtree
- * =======
+ * @class BemtreeTech
+ * @augments {XjstTech}
+ * @classdesc
  *
- * Склеивает *bemtree.xjst*-файлы по deps'ам, обрабатывает `xjst`-транслятором,
- * сохраняет (по умолчанию) в виде `?.bemtree.xjst.js`.
+ * Compiles BEMTREE template files with XJST translator and merges them into a single BEMTREE bundle.<br/><br/>
  *
- * **Опции**
+ * @param {Object}      [options]                               Options.
+ * @param {String}      [options.target='?.bemtree.xjst.js']    Path to target with compiled file.
+ * @param {String}      [options.filesTarget='?.files']         Path to target with FileList.
+ * @param {String}      [options.exportName='BEMTREE']          Name of BEMTREE template variable.
+ * @param {String}      [options.applyFuncName='apply']         Alias for `apply` function of base BEMTREE template.
+ * @param {Boolean}     [options.devMode=true]                  Set `devMode` option for convenient debugging.
+ * If `devMode` is set to true, code of templates will not be compiled but only wrapped for development purposes.
+ * @param {Boolean}     [options.includeVow=true]               Set `includeVow` option to include code of `vow` module
+ * into template file.
+ * @param {String[]}    [options.sourceSuffixes]                Files with specified suffixes involved in the assembly.
  *
- * * *String* **target** — Результирующий таргет. По умолчанию — `?.bemtree.xjst.js`.
- * * *String* **filesTarget** — files-таргет, на основе которого получается список исходных файлов
- *   (его предоставляет технология `files`). По умолчанию — `?.files`.
- * * *String* **sourceSuffixes** — суффиксы файлов, по которым строится `files`-таргет. По умолчанию — `bemtree.xjst`.
- * * *String* **exportName** — Имя переменной-обработчика BEMTREE. По умолчанию — `'BEMTREE'`.
- * * *String* **applyFuncName** — Имя apply-функции базового шаблона BEMTREE. По умолчанию — `'apply'`.
- * * *Boolean* **devMode** — Development-режим. По умолчанию `true`.
- * * *Boolean* **includeVow** - флаг позволяющий подклчать код `vow` в шаблон. По умолчанию `true`.
- * **Пример**
+ * @example
+ * var BemtreeTech = require('enb-xjst/techs/bemtree'),
+ *     FileProvideTech = require('enb/techs/file-provider'),
+ *     bem = require('enb-bem-techs');
  *
- * ```javascript
- * nodeConfig.addTech(require('enb-xjst/techs/bemtree'));
- * ```
+ * module.exports = function(config) {
+ *     config.node('bundle', function(node) {
+ *         // get FileList
+ *         node.addTechs([
+ *             [FileProvideTech, { target: '?.bemdecl.js' }],
+ *             [bem.levels, levels: ['blocks']],
+ *             bem.deps,
+ *             bem.files
+ *         ]);
+ *
+ *         // build BEMTREE file
+ *         node.addTech(BemtreeTech);
+ *         node.addTarget('?.bemtree.xjst.js');
+ *     });
+ * };
  */
 module.exports = require('./xjst').buildFlow()
     .name('bemtree')
