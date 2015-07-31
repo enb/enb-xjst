@@ -16,7 +16,7 @@ var EOL = require('os').EOL,
  * Important: Normally you don't need to use this tech directly.
  *
  * @param {Object}      [options]                       Options
- * @param {String}      [options.target='?.xjst.js']    Path to target with compiled file.
+ * @param {String}      [options.target='?.xjst.js']    Path to a target with compiled file.
  */
 module.exports = require('enb/lib/build-flow').create()
     .name('xjst')
@@ -32,7 +32,7 @@ module.exports = require('enb/lib/build-flow').create()
     })
     .methods({
         /**
-         * Reads source files from local filesystem
+         * Reads source files from local file system.
          * @param {Object[]} sourceFiles — objects that contain file information.
          * @returns {Promise}
          * @protected
@@ -85,9 +85,9 @@ module.exports = require('enb/lib/build-flow').create()
         },
 
         /**
-         * Error handler function
-         * @param {Error} error which occurs while XJST processing
-         * @param {SourceMap} sourceMap model object
+         * Error handler function.
+         * @param {Error} error which occurs while XJST processing.
+         * @param {SourceMap} sourceMap model object.
          * @returns {SyntaxError|*}
          * @protected
          */
@@ -122,7 +122,7 @@ module.exports = require('enb/lib/build-flow').create()
         },
 
         /**
-         * Returns configuration object for XJST processor
+         * Returns configuration object for XJST processor.
          * @returns {Object}
          * @protected
          */
