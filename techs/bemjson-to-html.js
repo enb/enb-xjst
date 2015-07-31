@@ -7,14 +7,14 @@ var requireOrEval = require('enb/lib/fs/require-or-eval'),
  * @augments {BaseTech}
  * @classdesc
  *
- * Build HTML file.<br/><br/>
+ * Builds HTML file.<br/><br/>
  *
  * This tech uses `BEMHTML.apply(bemjson)` to build HTML.
  *
- * @param {Object}  [options]                            Options
- * @param {String}  [options.target='?.html']            Path to target with HTML file.
- * @param {String}  [options.bemhtmlFile='?.bemhtml.js'] Path to file with compiled BEMHTML module.
- * @param {String}  [options.bemjsonFile='?.bemjson.js'] Path to BEMJSON file.
+ * @param {Object}  [options]                            Options.
+ * @param {String}  [options.target='?.html']            Path to a target with HTML file.
+ * @param {String}  [options.bemhtmlFile='?.bemhtml.js'] Path to a file with compiled BEMHTML module.
+ * @param {String}  [options.bemjsonFile='?.bemjson.js'] Path to a BEMJSON file.
  *
  * @example
  * var BemjsonToHtmlTech = require('enb-xjst/techs/bemjson-to-html'),
@@ -24,10 +24,10 @@ var requireOrEval = require('enb/lib/fs/require-or-eval'),
  *
  * module.exports = function(config) {
  *     config.node('bundle', function(node) {
- *         // get BEMJSON file
+ *         // gets BEMJSON file
  *         node.addTech([FileProvideTech, { target: '?.bemjson.js' }]);
  *
- *         // get FileList
+ *         // gets FileList
  *         node.addTechs([
  *             [bem.levels, levels: ['blocks']],
  *             bem.bemjsonToBemdecl,
@@ -35,11 +35,11 @@ var requireOrEval = require('enb/lib/fs/require-or-eval'),
  *             bem.files
  *         ]);
  *
- *         // build BEMHTML file
+ *         // builds BEMHTML file
  *         node.addTech(BemhtmlTech);
  *         node.addTarget('?.bemhtml.js');
  *
- *         // build HTML file
+ *         // builds HTML file
  *         node.addTech(BemjsonToHtmlTech);
  *         node.addTarget('?.html');
  *     });
