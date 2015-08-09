@@ -74,6 +74,7 @@ module.exports = require('enb/lib/build-flow').create()
                 )
                 .then(function (result) {
                     return bundle.compile(result, {
+                        dirname: this.node.getDir(),
                         exportName: this._exportName,
                         includeVow: this._includeVow,
                         requires: this._requires
@@ -136,4 +137,3 @@ module.exports = require('enb/lib/build-flow').create()
         }
     })
     .createTech();
-

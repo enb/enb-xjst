@@ -29,23 +29,63 @@ describe('bemhtml --browser', function () {
         return runTest(test, options);
     });
 
-    it('must get dependency from global scope', function () {
-        var test = generateTest({ block: 'block' }, '<div class="block">^_^</div>'),
-            options = {
-                requires: {
-                    depend: {
-                        globals: 'depend'
+    describe('requires', function () {
+        it('must get dependency from global scope', function () {
+            var test = generateTest({ block: 'block' }, '<div class="block">^_^</div>'),
+                options = {
+                    requires: {
+                        depend: {
+                            globals: 'depend'
+                        }
                     }
-                }
-            },
-            template = [
-                'block block, content: {',
-                '    return this.require("depend");',
-                '}'
-            ].join(EOL),
-            lib = 'var depend = "^_^";';
+                },
+                template = [
+                    'block block, content: {',
+                    '    return this.require("depend");',
+                    '}'
+                ].join(EOL),
+                lib = 'var depend = "^_^";';
 
-        return runTest(test, options, template, lib);
+            return runTest(test, options, template, lib);
+        });
+
+        it('must get dependency from global scope using dot-delimited key', function () {
+            var test = generateTest({ block: 'block' }, '<div class="block">Hello world!</div>'),
+                options = {
+                    requires: {
+                        text: {
+                            globals: 'text.text'
+                        }
+                    }
+                },
+                template = [
+                    'block block, content: {',
+                    '    return this.require("text");',
+                    '}'
+                ].join(EOL),
+                lib = 'var text = { text: "Hello world!" };';
+
+            return runTest(test, options, template, lib);
+        });
+
+        it('must require module from CommonJS', function () {
+            var test = generateTest({ block: 'block' }, '<div class="block">Hello world!</div>'),
+                options = {
+                    requires: {
+                        fake: {
+                            commonJS: 'fake'
+                        }
+                    }
+                },
+                template = [
+                    'block block, content: {',
+                    '    var fake = this.require("fake");',
+                    '    return fake.getText();',
+                    '}'
+                ].join(EOL);
+
+            return runTest(test, options, template);
+        });
     });
 });
 
@@ -59,6 +99,16 @@ function runTest(testContent, options, template, lib) {
                 'bla.bemhtml': template || 'block bla, tag: "a"'
             },
             bundle: {},
+            // jscs:disable
+            node_modules: {
+                fake: {
+                    'index.js': 'module.exports = { getText: function () { return "Hello world!"; } };'
+                },
+                depend: {
+                    'index.js': 'module.exports = "CommonJS";'
+                }
+            },
+            // jscs:enable
             'index.html': fs.readFileSync(htmlFilename, 'utf-8'),
             'test.js': testContent,
             'mocha.js': fs.readFileSync(mochaFilename, 'utf-8'),
