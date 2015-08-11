@@ -27,11 +27,10 @@ var path = require('path');
 var vow = require('vow');
 var vfs = require('enb/lib/fs/async-fs');
 var pinpoint = require('pinpoint');
-var XJST = require('bem-bl-xjst');
 var BemhtmlProcessor = require('sibling').declare({
     process: function (source, options) {
         try {
-            return { result: XJST.translate(source, options) };
+            return { result: require('bem-bl-xjst').translate(source, options) };
         } catch (e) {
             return { error: e };
         }
