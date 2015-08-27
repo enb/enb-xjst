@@ -85,6 +85,16 @@ describe('bemtree', function () {
             });
     });
 
+    it('must generate mock if there is no templates', function () {
+        return build({})
+            .spread(function (res) {
+                return res.BEMTREE.apply(data)
+                    .then(function (res) {
+                        res.must.eql({});
+                    });
+            });
+     });
+
     describe('no base templates', function () {
         it('should throw valid error if base template is missing (for development mode)', function () {
              var blocks = {

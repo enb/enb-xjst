@@ -29,6 +29,15 @@ describe('bemhtml', function () {
         return assert(bemjson, html, templates);
     });
 
+    it('must generate mock if there is no templates', function () {
+         var blocks = {};
+
+         return build(blocks)
+             .then(function (BEMHTML) {
+                 BEMHTML.apply({ block: 'block' }).must.be('');
+             });
+     });
+
     describe('no base templates', function () {
         it('should throw valid error if base template is missing (for development mode)', function () {
              var blocks = {
@@ -261,14 +270,14 @@ describe('bemhtml', function () {
 
 function build(templates, options) {
     var scheme = {
-            blocks: {
-                'base.bemhtml': fs.readFileSync(bemhtmlCoreFilename, 'utf-8')
-            },
+            blocks: {},
             bundle: {}
         },
         bundle, fileList;
 
     if (Array.isArray(templates)) {
+        scheme.blocks['base.bemhtml'] = fs.readFileSync(bemhtmlCoreFilename, 'utf-8');
+
         templates.forEach(function (item, i) {
             scheme.blocks['block-' + i + '.bemhtml'] = item;
         });

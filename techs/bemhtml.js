@@ -1,3 +1,6 @@
+var bundle = require('../lib/bundle'),
+    EOL = require('os').EOL;
+
 /**
  * @class BemhtmlTech
  * @augments {XjstTech}
@@ -47,4 +50,33 @@ module.exports = require('./xjst').buildFlow()
     .defineOption('cache', false)
     .defineOption('requires', {})
     .useFileList('bemhtml')
+    .builder(function (sourceFiles) {
+        // don't add fat wrapper code of bem-xjst
+        if (sourceFiles.length === 0) {
+            return this._mockBEMHTML();
+        }
+
+        return this._readSourceFiles(sourceFiles)
+            .then(this._compileXJST, this);
+    })
+    .methods({
+        /**
+         * Returns BEMHTML mock.
+         *
+         * @returns {String}
+         * @private
+         */
+        _mockBEMHTML: function () {
+            var exportName = this._exportName,
+                code = [
+                    'exports["' + exportName + '"] = {',
+                    '    apply: function () { return ""; }',
+                    '};'
+                ].join(EOL);
+
+            return bundle.compile(code, {
+                exportName: exportName
+            });
+        }
+    })
     .createTech();
