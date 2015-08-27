@@ -58,7 +58,11 @@ module.exports = require('enb/lib/build-flow').create()
          */
         _xjstProcess: function (code, sourceMap) {
             var jobQueue = this.node.getSharedResources().jobQueue,
+                baseTemplateName = this.getName() === 'bemhtml' ? 'i-bem__html.bemhtml' : 'i-bem.bemtree.xjst',
                 template = [
+                    'this._mode === "", !this.ctx: {',
+                        'throw Error("Seems like you have no base templates from ' + baseTemplateName + '");',
+                    '}',
                     'this._mode === "", !this.require: applyNext(this.require = function (lib) {',
                     '    return __xjst_libs__[lib];',
                     '})'
