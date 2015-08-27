@@ -1,6 +1,37 @@
 История изменений
 =================
 
+2.0.0
+-----
+
+### Новая функциональность
+
+* [Подключение сторонних библиотек](README.md#Подключение-сторонних-библиотек) c помощью опции [requires](api.ru.md#requires) ([#67]).
+
+### Крупные изменения
+
+* При сборке BEMTREE-шаблонов в результирующий код [добавляется](README.md#Асинхронная-шаблонизация) код модуля [vow](http://dfilatov.github.io/vow/) ([#71]). Настраивается с помощью опции [includeVow](api.ru.md#includevow).
+* Для случаев, когда шаблоны отсутствуют, результатом сборки является заглушка без XJST-кода ([#82]).
+* Если в сборку не попали базовые шаблоны (например, не указана зависимость), то при выполнении методов `BEMHTML.apply()` и `BEMTREE.apply()` будет генерироваться соответствующее сообщение об ошибке ([#83]).
+
+### Технологии
+
+* [ __*major*__ ] Технология `html-from-bemjson` переименована в [bemjson-to-html](api.ru.md#bemjson-to-html) ([#50]).
+* [ __*major*__ ] Технология `html-from-bemjson-i18n` удалена. Для работы с локализацией нужно использовать технологии из пакета `enb-bem-i18n` ([#51]).
+
+#### Опции технологий
+
+* [ __*major*__ ] Из технологии `bemjson-to-html` удалены устаревшие опции: `destTarget`, `bemjsonTarget` и `bemhtmlTarget`. Вместо них следует использовать `target`, `bemjsonFile` и `bemhtmlFile`, соответственно. ([#90]).
+
+### Зависимости
+
+* [ __*major*__ ] Изменились требования к версии модуля `enb`. Теперь для корректной работы требуется `enb` версии `0.16.0` или выше.
+* [ __*major*__ ] Модуль `bem-bl-xjst` обновлен до версии `2.1.4` и больше не является `peer`-зависимостью ([#54]).
+
+### Остальное
+
+* Исправлена обработка ошибок компилятора ([#52]).
+
 1.2.0
 -----
  * Переход на `bem-bl-xjst`, `bem-bl` больше не используется.
@@ -78,3 +109,13 @@
 -----
 
  * Переход от bemc к bem-core.
+
+[#90]: https://github.com/enb-bem/enb-bh/issues/90
+[#83]: https://github.com/enb-bem/enb-bh/issues/83
+[#82]: https://github.com/enb-bem/enb-bh/issues/82
+[#71]: https://github.com/enb-bem/enb-bh/issues/71
+[#67]: https://github.com/enb-bem/enb-bh/issues/67
+[#54]: https://github.com/enb-bem/enb-bh/issues/54
+[#52]: https://github.com/enb-bem/enb-bh/issues/52
+[#51]: https://github.com/enb-bem/enb-bh/issues/51
+[#50]: https://github.com/enb-bem/enb-bh/issues/50
