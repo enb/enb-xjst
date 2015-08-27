@@ -38,7 +38,7 @@
 Тип: `String`. По умолчанию: `?.files`.
 
 Имя таргета, откуда будет доступен список исходных файлов для сборки. Список файлов предоставляет технология
-[files](https://github.com/enb-bem/enb-bem-techs/blob/master/docs/api.ru.md#files) пакета 
+[files](https://github.com/enb-bem/enb-bem-techs/blob/master/docs/api.ru.md#files) пакета
 [enb-bem-techs](https://github.com/enb-bem/enb-bem-techs/blob/master/README.md).
 
 #### sourceSuffixes
@@ -49,7 +49,7 @@
 
 #### devMode
 
-Тип: `Boolean`. По умолчанию: `true`.
+Тип: `Boolean`. По умолчанию: `false`.
 
 Включает режим сборки для дальнейшей отладки. Код шаблонов не будет скомпилирован,
 а только обернут специальным XJST-кодом, включающим ядро XJST.
@@ -161,7 +161,7 @@ var BemhtmlTech = require('enb-xjst/techs/bemhtml'),
 Тип: `String`. По умолчанию: `?.files`.
 
 Имя таргета, откуда будет доступен список исходных файлов для сборки. Список файлов предоставляет
-технология [files](https://github.com/enb-bem/enb-bem-techs/blob/master/docs/api.ru.md#files) пакета 
+технология [files](https://github.com/enb-bem/enb-bem-techs/blob/master/docs/api.ru.md#files) пакета
 [enb-bem-techs](https://github.com/enb-bem/enb-bem-techs/blob/master/README.md).
 
 #### sourceSuffixes
@@ -172,7 +172,7 @@ var BemhtmlTech = require('enb-xjst/techs/bemhtml'),
 
 #### devMode
 
-Тип: `Boolean`. По умолчанию: `true`.
+Тип: `Boolean`. По умолчанию: `false`.
 
 Включает режим сборки для дальнейшей отладки. Код шаблонов не будет скомпилирован, а только обернут специальным BEM-XJST-кодом, включающим ядро BEM-XJST.
 
