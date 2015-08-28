@@ -29,6 +29,34 @@ describe('bemhtml', function () {
         return assert(bemjson, html, templates);
     });
 
+    describe('no base templates', function () {
+        it('should throw valid error if base template is missing (for development mode)', function () {
+             var blocks = {
+                 'bla.bemhtml': 'block bla, tag: "a"'
+             };
+
+             return build(blocks, { devMode: true })
+                 .then(function (BEMHTML) {
+                     (function () {
+                         BEMHTML.apply({ block: 'bla' });
+                     }).must.throw('Seems like you have no base templates from i-bem__html.bemhtml');
+                 });
+         });
+
+         it('should throw valid error if base template is missing (for production mode)', function () {
+             var blocks = {
+                 'bla.bemhtml': 'block bla, tag: "a"'
+             };
+
+             return build(blocks, { devMode: false })
+                 .then(function (BEMHTML) {
+                     (function () {
+                         BEMHTML.apply({ block: 'bla' });
+                     }).must.throw('Seems like you have no base templates from i-bem__html.bemhtml');
+                 });
+         });
+    });
+
     describe('xjst error', function () {
         afterEach(function () {
             mockRequire.stop(xjstPath);
@@ -240,9 +268,13 @@ function build(templates, options) {
         },
         bundle, fileList;
 
-    templates && templates.forEach(function (item, i) {
-        scheme.blocks['block-' + i + '.bemhtml'] = item;
-    });
+    if (Array.isArray(templates)) {
+        templates.forEach(function (item, i) {
+            scheme.blocks['block-' + i + '.bemhtml'] = item;
+        });
+    } else {
+        scheme.blocks = templates;
+    }
 
     mock(scheme);
 

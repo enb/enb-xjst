@@ -85,6 +85,38 @@ describe('bemtree', function () {
             });
     });
 
+    describe('no base templates', function () {
+        it('should throw valid error if base template is missing (for development mode)', function () {
+             var blocks = {
+                 'i-start.bemtree.xjst': files['i-start.bemtree.xjst'].contents,
+                 'data.bemtree.xjst': files['data.bemtree.xjst'].contents
+             };
+
+             return build(blocks, { devMode: true })
+                 .spread(function (res) {
+                     return res.BEMTREE.apply(data);
+                 })
+                 .fail(function (error) {
+                     error.message.must.be.equal('Seems like you have no base templates from i-bem.bemtree.xjst');
+                 });
+         });
+
+         it('should throw valid error if base template is missing (for production mode)', function () {
+             var blocks = {
+                 'i-start.bemtree.xjst': files['i-start.bemtree.xjst'].contents,
+                 'data.bemtree.xjst': files['data.bemtree.xjst'].contents
+             };
+
+             return build(blocks, { devMode: false })
+                 .spread(function (res) {
+                     return res.BEMTREE.apply(data);
+                 })
+                 .fail(function (error) {
+                     error.message.must.be.equal('Seems like you have no base templates from i-bem.bemtree.xjst');
+                 });
+         });
+    });
+
     describe('mode', function () {
         it('must build block in development mode', function () {
             return build(templates, { devMode: true })
