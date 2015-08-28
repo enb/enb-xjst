@@ -3,7 +3,7 @@ var EOL = require('os').EOL,
     vow = require('vow'),
     vfs = require('enb/lib/fs/async-fs'),
     pinpoint = require('pinpoint'),
-    SourceMap = require('../lib/source-map'),
+    buildMap = require('../lib/source-map'),
     bundle = require('../lib/bundle');
 
 /**
@@ -21,15 +21,6 @@ var EOL = require('os').EOL,
 module.exports = require('enb/lib/build-flow').create()
     .name('xjst')
     .target('target', '?.xjst.js')
-    .builder(function (sourceFiles) {
-        return this._readSourceFiles(sourceFiles)
-            .then(function (fileSources) {
-                var sourceMap = SourceMap(fileSources),
-                    code = sourceMap.getCode();
-
-                return this._xjstProcess(code, sourceMap);
-            }, this);
-    })
     .methods({
         /**
          * Reads source files from local file system.
@@ -48,16 +39,18 @@ module.exports = require('enb/lib/build-flow').create()
                     });
             }));
         },
-
         /**
-         * Merges content of source files and runs XJST processing for merged code.
-         * @param {String} code for processing.
-         * @param {SourceMap} object with sourceMap model.
+         * Compiles source code using BEMXJST processor.
+         * Wraps compiled code for usage with different modular systems.
+         *
+         * @param {{ path: String, contents: String }[]} sources — objects that contain file information.
          * @returns {Promise}
          * @private
          */
-        _xjstProcess: function (code, sourceMap) {
-            var jobQueue = this.node.getSharedResources().jobQueue,
+        _compileXJST: function (sources) {
+            var map = buildMap(sources),
+                code = map.getCode(),
+                jobQueue = this.node.getSharedResources().jobQueue,
                 baseTemplateName = this.getName() === 'bemhtml' ? 'i-bem__html.bemhtml' : 'i-bem.bemtree.xjst',
                 template = [
                     'this._mode === "", !this.ctx: {',
@@ -85,7 +78,7 @@ module.exports = require('enb/lib/build-flow').create()
                     });
                 }, this)
                 .fail(function (error) {
-                    throw this._generateError(error, sourceMap);
+                    throw this._generateError(error, map);
                 }, this);
         },
 

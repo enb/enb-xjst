@@ -1,3 +1,6 @@
+var bundle = require('../lib/bundle'),
+    EOL = require('os').EOL;
+
 /**
  * @class BemtreeTech
  * @augments {XjstTech}
@@ -46,4 +49,34 @@ module.exports = require('./xjst').buildFlow()
     .defineOption('cache', false)
     .defineOption('includeVow', true)
     .useFileList('bemtree.xjst')
+    .builder(function (sourceFiles) {
+        // don't add fat wrapper code of bem-xjst
+        if (sourceFiles.length === 0) {
+            return this._mockBEMTREE();
+        }
+
+        return this._readSourceFiles(sourceFiles)
+            .then(this._compileXJST, this);
+    })
+    .methods({
+        /**
+         * Returns BEMTREE mock.
+         *
+         * @returns {String}
+         * @private
+         */
+        _mockBEMTREE: function () {
+            var exportName = this._exportName,
+                code = [
+                    'exports["' + exportName + '"] = {',
+                    '    apply: function () { return Vow.resolve({}); }',
+                    '};'
+                ].join(EOL);
+
+            return bundle.compile(code, {
+                exportName: exportName,
+                includeVow: this._includeVow
+            });
+        }
+    })
     .createTech();
