@@ -63,7 +63,7 @@ module.exports = require('enb/lib/build-flow').create()
 
             code += EOL + template;
 
-            this.node.getLogger().log('Calm down, OmetaJS is running...');
+            this._log('Calm down, OmetaJS is running...');
             return jobQueue.push(
                     path.resolve(__dirname, '../lib/xjst-processor'),
                     code,
@@ -131,6 +131,19 @@ module.exports = require('enb/lib/build-flow').create()
                 exportName: this._exportName,
                 applyFuncName: this._applyFuncName
             };
+        },
+        /**
+         * Logs message.
+         *
+         * @param {String} msg — message
+         * @private
+         */
+        _log: function (msg) {
+            var node = this.node,
+                logger = node.getLogger(),
+                filename = path.join(node.getPath(), this._target);
+
+            logger.logWarningAction('wait', filename, msg);
         }
     })
     .createTech();
