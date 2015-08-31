@@ -140,10 +140,9 @@ module.exports = require('enb/lib/build-flow').create()
          */
         _log: function (msg) {
             var node = this.node,
-                logger = node.getLogger(),
-                filename = path.join(node.getPath(), this._target);
+                logger = node.getLogger();
 
-            logger.logWarningAction('wait', filename, msg);
+            logger.logWarningAction('wait', this._target, msg);
         }
     })
     .createTech();
