@@ -110,12 +110,12 @@
 
  * Переход от bemc к bem-core.
 
-[#90]: https://github.com/enb-bem/enb-bh/issues/90
-[#83]: https://github.com/enb-bem/enb-bh/issues/83
-[#82]: https://github.com/enb-bem/enb-bh/issues/82
-[#71]: https://github.com/enb-bem/enb-bh/issues/71
-[#67]: https://github.com/enb-bem/enb-bh/issues/67
-[#54]: https://github.com/enb-bem/enb-bh/issues/54
-[#52]: https://github.com/enb-bem/enb-bh/issues/52
-[#51]: https://github.com/enb-bem/enb-bh/issues/51
-[#50]: https://github.com/enb-bem/enb-bh/issues/50
+[#90]: https://github.com/enb-bem/enb-xjst/issues/90
+[#83]: https://github.com/enb-bem/enb-xjst/issues/83
+[#82]: https://github.com/enb-bem/enb-xjst/issues/82
+[#71]: https://github.com/enb-bem/enb-xjst/issues/71
+[#67]: https://github.com/enb-bem/enb-xjst/issues/67
+[#54]: https://github.com/enb-bem/enb-xjst/issues/54
+[#52]: https://github.com/enb-bem/enb-xjst/issues/52
+[#51]: https://github.com/enb-bem/enb-xjst/issues/51
+[#50]: https://github.com/enb-bem/enb-xjst/issues/50
