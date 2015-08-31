@@ -31,6 +31,7 @@
 ### Остальное
 
 * Исправлена обработка ошибок компилятора ([#52]).
+* Уменьшено время подключения технологий ([#76]).
 
 1.2.0
 -----
@@ -114,6 +115,7 @@
 [#83]: https://github.com/enb-bem/enb-xjst/issues/83
 [#82]: https://github.com/enb-bem/enb-xjst/issues/82
 [#71]: https://github.com/enb-bem/enb-xjst/issues/71
+[#76]: https://github.com/enb-bem/enb-xjst/issues/76
 [#67]: https://github.com/enb-bem/enb-xjst/issues/67
 [#54]: https://github.com/enb-bem/enb-xjst/issues/54
 [#52]: https://github.com/enb-bem/enb-xjst/issues/52
