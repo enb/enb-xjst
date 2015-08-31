@@ -141,6 +141,9 @@ function runTest(testContent, options, template, lib) {
             bundle: {},
             // jscs:disable
             node_modules: {
+                browserify: {
+                    'index.js': ''
+                },
                 fake: {
                     'index.js': 'module.exports = { getText: function () { return "^_^"; } };'
                 },

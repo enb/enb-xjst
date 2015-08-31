@@ -168,7 +168,14 @@ function build(templates, options) {
 
     var scheme = {
             blocks: {},
-            bundle: {}
+            bundle: {},
+            // jscs:disable
+            node_modules: {
+                browserify: {
+                    'index.js': ''
+                }
+            }
+            // jscs:enable
         },
         bundle, fileList;
 
