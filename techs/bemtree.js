@@ -13,7 +13,7 @@ var bundle = require('../lib/bundle'),
  * @param {String}      [options.filesTarget='?.files']         Path to a target with FileList.
  * @param {String}      [options.exportName='BEMTREE']          Name of BEMTREE template variable.
  * @param {String}      [options.applyFuncName='apply']         Alias for `apply` function of base BEMTREE template.
- * @param {Boolean}     [options.devMode=false]                 Set `devMode` option for convenient debugging.
+ * @param {Boolean}     [options.devMode=true]                  Set `devMode` option for convenient debugging.
  * If `devMode` is set to true, code of templates will not be compiled but only wrapped for development purposes.
  * @param {Boolean}     [options.includeVow=true]               Sets `includeVow` option to include code of `vow` module
  * into a template file.
@@ -45,7 +45,7 @@ module.exports = require('./xjst').buildFlow()
     .target('target', '?.bemtree.xjst.js')
     .defineOption('exportName', 'BEMTREE')
     .defineOption('applyFuncName', 'apply')
-    .defineOption('devMode', false)
+    .defineOption('devMode', true)
     .defineOption('cache', false)
     .defineOption('includeVow', true)
     .useFileList('bemtree.xjst')
