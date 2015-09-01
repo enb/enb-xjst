@@ -2,7 +2,7 @@
   "author": "Marat Dulin <mdevils@yandex.ru>",
   "description": "xjst support for ENB",
   "name": "enb-xjst",
-  "version": "2.0.0-rc2",
+  "version": "2.0.0",
   "repository": "git://github.com/enb-bem/enb-xjst",
   "homepage": "https://github.com/enb-bem/enb-xjst",
   "bugs": "https://github.com/enb-bem/enb-xjst/issues",
