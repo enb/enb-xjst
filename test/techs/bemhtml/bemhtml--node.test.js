@@ -1,10 +1,11 @@
 var EOL = require('os').EOL,
     fs = require('fs'),
     mock = require('mock-fs'),
-    dropRequireCache = require('enb/lib/fs/drop-require-cache'),
+    clearRequire = require('clear-require'),
     MockNode = require('mock-enb/lib/mock-node'),
     Tech = require('../../../techs/bemhtml'),
     FileList = require('enb/lib/file-list'),
+    loadDirSync = require('mock-enb/utils/dir-utils').loadDirSync,
     files = {
         'i-bem.bemhtml': {
             path: require.resolve('bem-bl-xjst/i-bem__html.bemhtml'),
@@ -155,7 +156,7 @@ function build(templates, options, lib) {
 
     bundle = new MockNode('bundle');
     fileList = new FileList();
-    fileList.loadFromDirSync('blocks');
+    fileList.addFiles(loadDirSync('blocks'));
     bundle.provideTechData('?.files', fileList);
 
     return bundle.runTech(Tech, options)
@@ -167,7 +168,7 @@ function build(templates, options, lib) {
                 ].join(EOL);
 
             fs.writeFileSync(filename, contents);
-            dropRequireCache(require, filename);
+            clearRequire(filename);
             return require(filename);
         });
 }
