@@ -1,7 +1,9 @@
 var EOL = require('os').EOL,
     path = require('path'),
     vow = require('vow'),
-    vfs = require('enb/lib/fs/async-fs'),
+    enb = require('enb'),
+    vfs = enb.asyncFS || require('enb/lib/fs/async-fs'),
+    buildFlow = enb.buildFlow || require('enb/lib/build-flow'),
     pinpoint = require('pinpoint'),
     buildMap = require('../lib/source-map'),
     bundle = require('../lib/bundle');
@@ -18,7 +20,7 @@ var EOL = require('os').EOL,
  * @param {Object}      [options]                       Options
  * @param {String}      [options.target='?.xjst.js']    Path to a target with compiled file.
  */
-module.exports = require('enb/lib/build-flow').create()
+module.exports = buildFlow.create()
     .name('xjst')
     .target('target', '?.xjst.js')
     .methods({

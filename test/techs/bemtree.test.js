@@ -7,6 +7,7 @@ var fs = require('fs'),
     MockNode = require('mock-enb/lib/mock-node'),
     Tech = require('../../techs/bemtree'),
     FileList = require('enb/lib/file-list'),
+    loadDirSync = require('mock-enb/utils/dir-utils').loadDirSync,
     fixturesDirname = path.join(__dirname, '..', 'fixtures', 'bemtree'),
     files = {
         'i-bem.bemtree.xjst': {
@@ -195,7 +196,7 @@ function build(templates, options) {
 
     bundle = new MockNode('bundle');
     fileList = new FileList();
-    fileList.loadFromDirSync('blocks');
+    fileList.addFiles(loadDirSync('blocks'));
     bundle.provideTechData('?.files', fileList);
 
     return bundle.runTechAndRequire(Tech, options)

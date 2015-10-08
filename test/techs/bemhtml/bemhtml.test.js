@@ -8,12 +8,13 @@ var fs = require('fs'),
     xjstPath = require.resolve('bem-bl-xjst'),
     Tech = require(techPath),
     FileList = require('enb/lib/file-list'),
-    dropRequireCache = require('enb/lib/fs/drop-require-cache'),
+    loadDirSync = require('mock-enb/utils/dir-utils').loadDirSync,
+    clearRequire = require('clear-require'),
     bemhtmlCoreFilename = require.resolve('bem-bl-xjst/i-bem__html.bemhtml');
 
 describe('bemhtml', function () {
     beforeEach(function () {
-        dropRequireCache(require, techPath);
+        clearRequire(techPath);
         Tech = require(techPath);
     });
 
@@ -74,7 +75,7 @@ describe('bemhtml', function () {
         function mockXJST(xjst) {
             mockRequire(xjstPath, xjst);
 
-            dropRequireCache(require, techPath);
+            clearRequire(techPath);
             Tech = require(techPath);
         }
 
@@ -225,7 +226,7 @@ describe('bemhtml', function () {
 
             bundle = new MockNode('bundle');
             fileList = new FileList();
-            fileList.loadFromDirSync('blocks');
+            fileList.addFiles(loadDirSync('blocks'));
             bundle.provideTechData('?.files', fileList);
 
             return vow.all([
@@ -258,7 +259,7 @@ describe('bemhtml', function () {
 
         bundle = new MockNode('bundle');
         fileList = new FileList();
-        fileList.loadFromDirSync('blocks');
+        fileList.addFiles(loadDirSync('blocks'));
         bundle.provideTechData('?.files', fileList);
 
         return bundle.runTechAndRequire(Tech, { exportName: 'BH' })
@@ -296,7 +297,7 @@ function build(templates, options) {
 
     bundle = new MockNode('bundle');
     fileList = new FileList();
-    fileList.loadFromDirSync('blocks');
+    fileList.addFiles(loadDirSync('blocks'));
     bundle.provideTechData('?.files', fileList);
 
     return bundle.runTechAndRequire(Tech, options)

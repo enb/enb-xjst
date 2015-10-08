@@ -4,6 +4,7 @@ var EOL = require('os').EOL,
     mock = require('mock-fs'),
     MockNode = require('mock-enb/lib/mock-node'),
     FileList = require('enb/lib/file-list'),
+    loadDirSync = require('mock-enb/utils/dir-utils').loadDirSync,
     Tech = require('../../../techs/bemhtml'),
     bemhtmlCoreFilename = require.resolve('bem-bl-xjst/i-bem__html.bemhtml'),
     htmlFilename = path.join(__dirname, '..', '..', 'fixtures', 'bemhtml', 'browser--ym.html'),
@@ -164,7 +165,7 @@ function runTest(testContent, options, template, lib) {
 
     bundle = new MockNode('bundle');
     fileList = new FileList();
-    fileList.loadFromDirSync('blocks');
+    fileList.addFiles(loadDirSync('blocks'));
     bundle.provideTechData('?.files', fileList);
 
     return bundle.runTech(Tech, options)
