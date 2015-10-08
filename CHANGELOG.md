@@ -1,6 +1,11 @@
 История изменений
 =================
 
+2.1.0
+-----
+
+* Добавлена поддержка `enb` версии `1.x` ([#97]).
+
 2.0.0
 -----
 
@@ -111,6 +116,7 @@
 
  * Переход от bemc к bem-core.
 
+[#97]: https://github.com/enb-bem/enb-xjst/pull/97
 [#90]: https://github.com/enb-bem/enb-xjst/issues/90
 [#83]: https://github.com/enb-bem/enb-xjst/issues/83
 [#82]: https://github.com/enb-bem/enb-xjst/issues/82
